@@ -2,23 +2,26 @@ import java.util.*;
 
 public class Opcode extends Code {
     ArrayList<String> definedInstructions = new ArrayList<String>();
-    //static final String Load_A = "LDAA";
-    //static final String Load_B = "LDAB";
-    //static final String Load_X = "LDX";
-    //static final String Load_Y = "LDY";
-    //static final String Add_A = "ADDA";
-    //static final String Add_B = "ADDB";
     
     public Opcode() {
         super();
         definedInstructions.add("LDAA");
         definedInstructions.add("LDAB");
+        definedInstructions.add("LDX");
+        definedInstructions.add("LDY");
+    }
+
+    public void instructionDefinition() {
+        System.out.println("LDAA: \n");
+        System.out.println("\tLoads the value written after it to accumulator A.");
+
+        System.out.println("LDAB: \n");
+        System.out.println("\tLoads the value written after it to accumulator B.");
     }
 
     public int checkOpcode(){
         for(int i = 0; i < definedInstructions.size(); i++) {
             if(getCode().equals(definedInstructions.get(i))) {
-                System.out.println("Your instruction is " + getCode() + "\n");
                 return i;
             }
             else {

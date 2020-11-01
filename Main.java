@@ -43,23 +43,42 @@ public class Main {
         for(int i = 0; i < level.size(); i++) {
             System.out.println("Level " + level.get(i).getCurrent() + "'s problem is: \n");
             System.out.println(level.get(i).getProblem() + "\n");
+            break;
         } 
         save.UploadProblem(level);
     } //end theProblem
 
+    //This function gets the opcode and the operand from the user
     public static void getUserInput() {
         String userInput;
         Opcode userOpcode = new Opcode();
+        Operand userOperand = new Operand();
 
         Scanner obj = new Scanner(System.in);
         System.out.println("Please enter your solution to the problem: \n");
-        userInput = obj.nextLine();
+        userInput = obj.next();
         userOpcode.setCode(userInput);
-        checkUserInput(userOpcode);
+        userInput = obj.next();
+        userOperand.setCode(userInput);
+        setUserInput(userOpcode, userOperand);
     }
 
-    public static void checkUserInput(Opcode userOpcode) {
-        userOpcode.checkOpcode();
+    //This function sets the opcode and the operand, and check if they are valid or not.
+    public static void setUserInput(Opcode userOpcode, Operand userOperand) {
+        int instNum;
+        int value;
+
+        instNum = userOpcode.checkOpcode();
+        value = userOperand.checkOperand();
+        applyCode(instNum, value);
+    }
+
+    public static void applyCode(int instNum, int value) {
+        
+        if(instNum == 0) {
+            Accumulator accA = new Accumulator();
+            accA.setValue(value);
+        } 
     }
 
     public static void Wait(){

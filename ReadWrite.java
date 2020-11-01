@@ -87,10 +87,15 @@ public class ReadWrite {
             int problemNum;
 
             while(input.hasNextLine()) {
-                a = input.nextLine();
-                temp = input.nextLine();
+                a = input.next();
+                //System.out.println("This should be Level: " + a + "\n");
+                temp = input.next();
+                //System.out.println("This should be 1 (String): " + temp + "\n");
                 problemNum = Integer.parseInt(temp);
+                //System.out.println("This should be 1: " + problemNum + "\n");
                 problem = input.nextLine();
+                problem = input.nextLine();
+                //System.out.println("This should be the line: " + problem + " \n");
                 level.add(new Level(problemNum, problem));
             }
         } catch (IOException e) {
