@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -12,7 +13,11 @@ public class Main {
 
         begin(users);  //Allow the user to log in or to be added to the system
 
-        //viewProblem(level);
+        Wait();
+        clearScreen();
+
+        viewProblem(level);
+        getUserInput();
     } //end main
 
     public static int begin(ArrayList<User> users) {
@@ -43,8 +48,26 @@ public class Main {
     } //end theProblem
 
     public static void getUserInput() {
-        System.out.println("Please enter your solution to the problem: \n");
+        String userInput;
+        Opcode userOpcode = new Opcode();
 
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Please enter your solution to the problem: \n");
+        userInput = obj.nextLine();
+        userOpcode.setCode(userInput);
+        checkUserInput(userOpcode);
+    }
+
+    public static void checkUserInput(Opcode userOpcode) {
+        userOpcode.checkOpcode();
+    }
+
+    public static void Wait(){
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public static void clearScreen() { 

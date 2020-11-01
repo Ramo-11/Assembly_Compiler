@@ -1,8 +1,11 @@
-Main.class: Main.java ReadWrite.class User.class Level.class Accumulator.class Register.class Code.class
+Main.class: Main.java ReadWrite.class User.class Level.class Accumulator.class Register.class Code.class Opcode.class
 	javac -g Main.java
 
 ReadWrite.class: ReadWrite.java User.class Accumulator.class Register.class Level.class Code.class
 	javac -g ReadWrite.java
+
+Opcode.class: Opcode.java Code.class
+	javac -g Opcode.java
 
 User.class: User.java Level.class
 	javac -g User.java 

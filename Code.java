@@ -8,10 +8,6 @@ public class Code {
         instruction = "0";
     }
 
-    public Code(String instruction) {
-        this.instruction = instruction;
-    }
-
     public void setCode(String instruction) {
         this.instruction = instruction;
     }
@@ -19,5 +15,4 @@ public class Code {
     public String getCode() {
         return instruction;
     }
-
 } //end Code
