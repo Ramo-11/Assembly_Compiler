@@ -14,10 +14,14 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        rank = 0;
+        this.rank = 0;
         level = new Level();
     }
     
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
     public String getName() {
         return this.name;
     }

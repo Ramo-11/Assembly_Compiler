@@ -3,16 +3,22 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        String[] temp;
         ArrayList<User> users = new ArrayList<User>();
-        User option = new User();
-        ReadWrite save = new ReadWrite();
+        ArrayList<Level> level = new ArrayList<Level>();
         ReadWrite load = new ReadWrite();
-        Accumulator acc = new Accumulator();
-        Register reg = new Register();
-        Code co = new Code();
 
-        load.DownloadUser(users);
+        load.DownloadUser(users); //Download the information of all the users
+        load.DownloadProblem(level); //Download all the levels' information
+
+        begin(users);  //Allow the user to log in or to be added to the system
+
+        //viewProblem(level);
+    } //end main
+
+    public static void begin(ArrayList<User> users) {
+        String[] temp;
+        ReadWrite save = new ReadWrite();
+        User option = new User();
         
         temp = option.login(users);
         if (temp[1].equals("FALSE")) {
@@ -39,6 +45,24 @@ public class Main {
         else {
                 System.out.println("Welcome " + temp[0] + "!\n");
         }
-    } //end main
+    } //end begin
 
+    public static void viewProblem(ArrayList<Level> level) {
+        ReadWrite save = new ReadWrite();
+
+        for(int i = 0; i < level.size(); i++) {
+            System.out.println("Level " + level.get(i).getCurrent() + "'s problem is: \n");
+            System.out.println(level.get(i).getProblem() + "\n");
+        } 
+        save.UploadProblem(level);
+    } //end theProblem
+
+    //public static void getUserInput() {
+        //System.out.println
+    //}
+
+    public static void clearScreen() { 
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
 } //end Main
