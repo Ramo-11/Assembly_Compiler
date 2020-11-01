@@ -30,18 +30,40 @@ public class User {
         return this.rank;
     }
 
-    public String[] login(ArrayList<User> users) {
-        String[] tempName = {"0", "0"};
+    public int login(ArrayList<User> users) {
+        String tempName;
         Scanner obj = new Scanner(System.in);
         System.out.println("\nPlease enter your name: ");
-        tempName[0] = obj.nextLine();
+        tempName = obj.nextLine();
 
         for (int i = 0; i < users.size(); i++) {
-            if(tempName[0].equals(users.get(i).getName())) {
-                return tempName;
+            if(tempName.equals(users.get(i).getName())) {
+                System.out.println("Welcome " + tempName + "!\n");
+                return i;
             }
-        }
-        tempName[1] = "FALSE";
-        return tempName;
-    }
+        } //end for
+            int a;
+            ReadWrite save = new ReadWrite();
+                
+            Scanner obj2 = new Scanner(System.in);
+            System.out.println("We can't find you in our system!");
+            System.out.println("Do you want to be a new member?");
+            System.out.println("Press 1 for " + "Yes" + " and 2 for " + "No");
+            a = obj2.nextInt();
+            
+            if (a == 1) {
+                users.add(new User(tempName));
+                save.UploadUser(users);       
+                System.out.println("Awesome! you have been added to our system.");
+                return -1;
+            }
+            else if (a == 2) {
+                System.exit(0);
+            }
+            else {
+                System.out.println("Invalid input!\n");
+                System.exit(0);
+            }
+        return -2;
+    } //end login
 } //end User
