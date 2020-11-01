@@ -5,7 +5,7 @@ public class ReadWrite {
 
     public void DownloadUser(ArrayList<User> users) {
         try {
-            File theFile = new File("UsersList.txt");
+            File theFile = new File("listUsers.txt");
             Scanner input = new Scanner(theFile);
             String a;
 
@@ -34,7 +34,7 @@ public class ReadWrite {
 
     public void UploadUser(ArrayList<User> users) {
         try {
-            FileWriter outFile = new FileWriter("UsersList.txt", false);
+            FileWriter outFile = new FileWriter("listUsers.txt", false);
             PrintWriter output = new PrintWriter(outFile);
             
             for (int i = 0; i < users.size(); i++) {

@@ -26,18 +26,18 @@ public class User {
         return this.rank;
     }
 
-    public String login(ArrayList<User> users) {
-        String tempName;
+    public String[] login(ArrayList<User> users) {
+        String[] tempName = {"0", "0"};
         Scanner obj = new Scanner(System.in);
         System.out.println("\nPlease enter your name: ");
-        tempName = obj.nextLine();
+        tempName[0] = obj.nextLine();
 
         for (int i = 0; i < users.size(); i++) {
-            if(tempName.equals(users.get(i).getName())) {
+            if(tempName[0].equals(users.get(i).getName())) {
                 return tempName;
             }
         }
-        tempName = "FALSE";
+        tempName[1] = "FALSE";
         return tempName;
     }
 } //end User

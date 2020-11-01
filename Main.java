@@ -3,16 +3,19 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        String temp;
+        String[] temp;
         ArrayList<User> users = new ArrayList<User>();
         User option = new User();
         ReadWrite save = new ReadWrite();
         ReadWrite load = new ReadWrite();
+        Accumulator acc = new Accumulator();
+        Register reg = new Register();
+        Code co = new Code();
 
         load.DownloadUser(users);
         
         temp = option.login(users);
-        if (temp.equals("FALSE")) {
+        if (temp[1].equals("FALSE")) {
             int a;
             Scanner obj2 = new Scanner(System.in);
             System.out.println("We can't find you in our system!");
@@ -21,10 +24,7 @@ public class Main {
             a = obj2.nextInt();
             
             if (a == 1) {
-                System.out.println("Please retype your name: ");
-                Scanner obj3 = new Scanner(System.in);
-                temp = obj3.nextLine();
-                users.add(new User(temp));
+                users.add(new User(temp[0]));
                 save.UploadUser(users);       
                 System.out.println("Awesome! you have been added to our system.");
             }
@@ -37,7 +37,7 @@ public class Main {
             }
         } //end if
         else {
-                System.out.println("Welcome " + temp + "!\n");
+                System.out.println("Welcome " + temp[0] + "!\n");
         }
     } //end main
 

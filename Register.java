@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Register {
 
-    int[] value;
+    int[] value = new int[2];
 
     public Register() {
         value[0] = 0;
