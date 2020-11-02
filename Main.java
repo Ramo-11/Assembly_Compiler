@@ -44,10 +44,10 @@ public class Main {
         int i;
         System.out.println("Which level do you want to view?");
         i = myObj.nextInt();
-        System.out.println("Level " + level.get(i).getCurrent() + "'s problem is: \n");
-        System.out.println(level.get(i).getProblem() + "\n");
+        System.out.println("Level " + level.get(i-1).getCurrent() + "'s problem is: \n");
+        System.out.println(level.get(i-1).getProblem() + "\n");
         save.UploadProblem(level);
-        level.get(i).Start();
+        level.get(i-1).Start();
     } //end theProblem
 
     //This function gets the opcode and the operand from the user

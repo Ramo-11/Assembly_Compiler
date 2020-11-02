@@ -9,7 +9,7 @@ public class Operand {
     public Operand() {
         instruction = "0";
         immediate = '#';
-        hex = '%';
+        hex = '$';
     }
 
     public void setOperand(String instruction) {
@@ -28,18 +28,33 @@ public class Operand {
         
         temp = getOperand();
         if(Character.compare(temp.charAt(0), immediate) == 0) {
-            for(int index = 1; index < temp.length(); index++) {
-                storeC.add(temp.charAt(index));             
+            if(Character.compare(temp.charAt(1), hex) == 0) {
+                for(int index = 2; index < temp.length(); index++) {
+                    storeC.add(temp.charAt(index));             
+                }
+                StringBuilder store = new StringBuilder(storeC.size());//to store the number that is after the symbol
+                for(Character ch: storeC) {
+                    store.append(ch);
+                }
+                result = store.toString();
+                value = Integer.parseInt(result, 16); 
+                
+                return value;
             }
-            StringBuilder store = new StringBuilder(storeC.size());//to store the number that is after the symbol
-            for(Character ch: storeC) {
-                store.append(ch);
-            }
-            result = store.toString();
-            value = Integer.parseInt(result); 
-            return value;
-        } //end if
-        else {
+             else {
+                 for(int index = 1; index < temp.length(); index++) {
+                    storeC.add(temp.charAt(index));             
+                 }
+                 StringBuilder store = new StringBuilder(storeC.size());//to store the number that is after the symbol
+                 for(Character ch: storeC) {
+                     store.append(ch);
+                 }
+                 result = store.toString();
+                 value = Integer.parseInt(result); 
+                 return value;
+             } //end esle
+        }
+       else {
             System.out.println("Invalid operand\n");
             return -1;
         }

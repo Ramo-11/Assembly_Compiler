@@ -35,7 +35,7 @@ public class Level {
     }
 
     public void Start() {
-        code.setUserCode();
-        code.checkUserCode();
+        code.setUserCode(); //Get the input from the user and stores it
+        code.checkUserCode(); //Does the operation of the code
     }
 } //end Level

@@ -5,6 +5,7 @@ public class Code {
     String instruction;
     Opcode userOpcode = new Opcode();
     Operand userOperand = new Operand();
+    Accumulator accA = new Accumulator();
 
     public Code() {
         instruction = "0";
@@ -15,9 +16,9 @@ public class Code {
     }
     
     public void setUserCode(){
+        System.out.println("Please enter your solution to the problem: \n");
         String userInput;
         Scanner obj = new Scanner(System.in);
-        System.out.println("Please enter your solution to the problem: \n");
         userInput = obj.next();
         userOpcode.setOpcode(userInput);
         userInput = obj.next();
@@ -25,8 +26,14 @@ public class Code {
     }
 
     public void checkUserCode() {
-        userOpcode.checkOpcode();
-        userOperand.checkOperand();
+        int op;
+        int opr;
+        op = userOpcode.checkOpcode();
+        opr = userOperand.checkOperand();
+        if(op == 0) {
+            accA.setValue(opr);
+        }
+        System.out.println("This should Accumulator A's value: " + accA.getValue() + "\n");
     } 
 
     public String getCode() {
