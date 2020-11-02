@@ -7,17 +7,18 @@ public class Main {
         ArrayList<User> users = new ArrayList<User>();
         ArrayList<Level> level = new ArrayList<Level>();
         ReadWrite load = new ReadWrite();
+        int userNum;
 
         load.DownloadUser(users); //Download the information of all the users
         load.DownloadProblem(level); //Download all the levels' information
 
-        begin(users);  //Allow the user to log in or to be added to the system
+        userNum = begin(users);  //Allow the user to log in or to be added to the system
 
         Wait();
         clearScreen();
 
         viewProblem(level);
-        getUserInput();
+       // getUserInput();
     } //end main
 
     public static int begin(ArrayList<User> users) {
@@ -39,29 +40,29 @@ public class Main {
 
     public static void viewProblem(ArrayList<Level> level) {
         ReadWrite save = new ReadWrite();
-
-        for(int i = 0; i < level.size(); i++) {
-            System.out.println("Level " + level.get(i).getCurrent() + "'s problem is: \n");
-            System.out.println(level.get(i).getProblem() + "\n");
-            break;
-        } 
+        Scanner myObj = new Scanner(System.in);
+        int i;
+        System.out.println("Which level do you want to view?");
+        i = myObj.nextInt();
+        System.out.println("Level " + level.get(i).getCurrent() + "'s problem is: \n");
+        System.out.println(level.get(i).getProblem() + "\n");
         save.UploadProblem(level);
+        level.get(i).Start();
     } //end theProblem
 
     //This function gets the opcode and the operand from the user
-    public static void getUserInput() {
+    /*public static void getUserInput() {
         String userInput;
         Opcode userOpcode = new Opcode();
         Operand userOperand = new Operand();
 
         Scanner obj = new Scanner(System.in);
-        System.out.println("Please enter your solution to the problem: \n");
         userInput = obj.next();
         userOpcode.setCode(userInput);
         userInput = obj.next();
         userOperand.setCode(userInput);
         setUserInput(userOpcode, userOperand);
-    }
+    }*/
 
     //This function sets the opcode and the operand, and check if they are valid or not.
     public static void setUserInput(Opcode userOpcode, Operand userOperand) {
@@ -70,16 +71,15 @@ public class Main {
 
         instNum = userOpcode.checkOpcode();
         value = userOperand.checkOperand();
-        applyCode(instNum, value);
+        //applyCode(instNum, value);
     }
 
-    public static void applyCode(int instNum, int value) {
-        
+    /*public static void applyCode(int instNum, int value) {
         if(instNum == 0) {
             Accumulator accA = new Accumulator();
             accA.setValue(value);
         } 
-    }
+    }*/
 
     public static void Wait(){
         try {

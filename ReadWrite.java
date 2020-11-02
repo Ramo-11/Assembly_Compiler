@@ -88,14 +88,10 @@ public class ReadWrite {
 
             while(input.hasNextLine()) {
                 a = input.next();
-                //System.out.println("This should be Level: " + a + "\n");
                 temp = input.next();
-                //System.out.println("This should be 1 (String): " + temp + "\n");
                 problemNum = Integer.parseInt(temp);
-                //System.out.println("This should be 1: " + problemNum + "\n");
                 problem = input.nextLine();
                 problem = input.nextLine();
-                //System.out.println("This should be the line: " + problem + " \n");
                 level.add(new Level(problemNum, problem));
             }
         } catch (IOException e) {
@@ -109,7 +105,7 @@ public class ReadWrite {
             PrintWriter output = new PrintWriter(outFile);
             
             for (int i = 0; i < level.size(); i++) {
-                output.print("Level\n");
+                output.print("Level ");
                 output.print(level.get(i).getCurrent() + "\n");
                 output.print(level.get(i).getProblem() + "\n");
             }

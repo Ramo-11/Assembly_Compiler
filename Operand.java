@@ -1,23 +1,32 @@
 import java.util.*;
 
-public class Operand extends Code {
+public class Operand {
 
     char immediate;
     char hex;
+    String instruction;
 
     public Operand() {
-        super();
+        instruction = "0";
         immediate = '#';
         hex = '%';
     }
-//#100
+
+    public void setOperand(String instruction) {
+        this.instruction = instruction;
+    }
+    
+    public String getOperand() {
+        return instruction;
+    }
+
     public int checkOperand(){
         String temp; 
         ArrayList<Character> storeC = new ArrayList<Character>();
         int value;
         String result;
         
-        temp = getCode();
+        temp = getOperand();
         if(Character.compare(temp.charAt(0), immediate) == 0) {
             for(int index = 1; index < temp.length(); index++) {
                 storeC.add(temp.charAt(index));             

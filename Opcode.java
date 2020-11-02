@@ -1,10 +1,11 @@
 import java.util.*;
 
-public class Opcode extends Code {
+public class Opcode {
     ArrayList<String> definedInstructions = new ArrayList<String>();
-    
+    String instruction;
+
     public Opcode() {
-        super();
+        instruction = "0";
         definedInstructions.add("LDAA");
         definedInstructions.add("LDAB");
         definedInstructions.add("LDX");
@@ -19,9 +20,17 @@ public class Opcode extends Code {
         System.out.println("\tLoads the value written after it to accumulator B.");
     }
 
+    public void setOpcode(String instruction) {
+        this.instruction = instruction;
+    }
+    
+    public String getOpcode() {
+        return instruction;
+    }
+    
     public int checkOpcode(){
         for(int i = 0; i < definedInstructions.size(); i++) {
-            if(getCode().equals(definedInstructions.get(i))) {
+            if(getOpcode().equals(definedInstructions.get(i))) {
                 return i;
             }
             else {
