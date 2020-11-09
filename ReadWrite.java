@@ -118,7 +118,7 @@ public class ReadWrite {
     
     /*public void DownloadUserSolution(ArrayList<Level> level) {
         try {
-            File theFile = new File("listProblems.txt");
+            File theFile = new File("UserSolutions.txt");
             Scanner input = new Scanner(theFile);
            
             String opcode;
@@ -128,7 +128,7 @@ public class ReadWrite {
 
             while(input.hasNextLine()) {
                 opcode = input.next();
-                level.add(new Level(problemNum, problem));
+                level.add(new Level);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -38,7 +38,7 @@ public class User {
 
         for (int i = 0; i < users.size(); i++) {
             if(tempName.equals(users.get(i).getName())) {
-                System.out.println("Welcome " + tempName + "!\n");
+                System.out.println("\nWelcome " + tempName + "!\n");
                 return i;
             }
         } //end for

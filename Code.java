@@ -6,6 +6,8 @@ public class Code {
     Opcode userOpcode = new Opcode();
     Operand userOperand = new Operand();
     Accumulator accA = new Accumulator();
+    Accumulator accB = new Accumulator();
+    Register regX = new Register();
 
     public Code() {
         instruction = "0";
@@ -40,10 +42,36 @@ public class Code {
             else {
                 x = 0;
             }
-        } while (x == 1);
-        opr = userOperand.checkOperand();
-        if(op == 0) {
-            accA.setValue(opr);
-        }
+        } while(x == 1);
+
+        do {
+            opr = userOperand.checkOperand();
+            if(opr == -1) {
+                setUserCode();
+                x = 1;
+            }
+            else if(((op == 0) || (op == 1)) && (opr > 255)) {
+                System.out.println("Error: The value you are trying to load is too big!\n");
+                setUserCode();
+                x = 1;
+            }
+            else {
+                x = 0;
+            }
+        } while(x == 1);
+
+        setAccumulators(op, opr);
     } //end checkUserCode
+
+    public void setAccumulators(int opNum, int oprValue) {
+        if(opNum == 0) { //LDAA
+            accA.setValue(oprValue);
+        }
+        else if(opNum == 1) { //LDAB
+            accB.setValue(oprValue);
+        }
+        else if(opNum == 2) { //LDX
+            regX.setValue(oprValue);
+        }
+    } //end Accumulators
 } //end Code

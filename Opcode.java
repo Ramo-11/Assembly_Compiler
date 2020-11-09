@@ -30,13 +30,13 @@ public class Opcode {
                 if(getOpcode().equals(definedInstructions.get(i))) {
                     return i;
                 }
-                else {
+                else if(i == (definedInstructions.size() - 1)) {
                     throw new CodeException();  
                 }
+                else {}
             } //end for
         } catch (CodeException e) {
             System.out.println(e.getMessage());
-            System.out.println("Test");
             return -2;
         }
         return -2;
