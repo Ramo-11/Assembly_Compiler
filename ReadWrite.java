@@ -115,4 +115,44 @@ public class ReadWrite {
             System.out.println(e.getMessage());
         }
     } //end UploadUser
+    
+    /*public void DownloadUserSolution(ArrayList<Level> level) {
+        try {
+            File theFile = new File("listProblems.txt");
+            Scanner input = new Scanner(theFile);
+           
+            String opcode;
+            String operand;
+            String temp;
+            int problemNum;
+
+            while(input.hasNextLine()) {
+                opcode = input.next();
+                level.add(new Level(problemNum, problem));
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    } //end DownloadUser*/
+
+    public void UploadUserSolution(ArrayList<Level> level) {
+        try {
+            FileWriter outFile = new FileWriter("UserSolutions.txt", false);
+            PrintWriter output = new PrintWriter(outFile);
+            
+            for (int i = 0; i < level.size(); i++) {
+                if(level.get(i).code.userOpcode.getOpcode().equals("0")) {
+                    break;
+                }
+                else {
+                    output.print(level.get(i).code.userOpcode.getOpcode());
+                    output.print("\t" + level.get(i).code.userOperand.getOperand() + "\n");
+                }
+            }
+            outFile.close();
+            output.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    } //end UploadUser
 } //end ReadWrite

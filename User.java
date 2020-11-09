@@ -33,7 +33,7 @@ public class User {
     public int login(ArrayList<User> users) {
         String tempName;
         Scanner obj = new Scanner(System.in);
-        System.out.println("\nPlease enter your name: ");
+        System.out.println("Please enter your name: ");
         tempName = obj.nextLine();
 
         for (int i = 0; i < users.size(); i++) {

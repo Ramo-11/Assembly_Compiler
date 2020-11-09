@@ -23,21 +23,26 @@ public class Opcode {
     public void setOpcode(String instruction) {
         this.instruction = instruction;
     }
+      
+    public int checkOpcode(){
+        try {
+            for(int i = 0; i < definedInstructions.size(); i++) {
+                if(getOpcode().equals(definedInstructions.get(i))) {
+                    return i;
+                }
+                else {
+                    throw new CodeException();  
+                }
+            } //end for
+        } catch (CodeException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Test");
+            return -2;
+        }
+        return -2;
+    } //end checkOpcode
     
     public String getOpcode() {
         return instruction;
     }
-    
-    public int checkOpcode(){
-        for(int i = 0; i < definedInstructions.size(); i++) {
-            if(getOpcode().equals(definedInstructions.get(i))) {
-                return i;
-            }
-            else {
-                System.out.println("No match!" + " check your spelling.\n");      
-                return -1;
-            }
-        } //end for
-        return -2;
-    } //end checkOpcode
 } //end Opcode

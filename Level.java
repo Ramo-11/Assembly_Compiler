@@ -33,7 +33,7 @@ public class Level {
     public String getProblem() {
         return problem;
     }
-
+    
     public void Start() {
         code.setUserCode(); //Get the input from the user and stores it
         code.checkUserCode(); //Does the operation of the code

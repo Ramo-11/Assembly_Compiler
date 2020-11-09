@@ -10,10 +10,6 @@ public class Code {
     public Code() {
         instruction = "0";
     }
-
-    public void setCode(String instruction) {
-        this.instruction = instruction;
-    }
     
     public void setUserCode(){
         System.out.println("Please enter your solution to the problem: \n");
@@ -25,18 +21,29 @@ public class Code {
         userOperand.setOperand(userInput);
     }
 
+    public void setUserCode(String a, String b) {
+        userOpcode.setOpcode(a);
+        userOperand.setOperand(b);
+    }
+
     public void checkUserCode() {
-        int op;
+        int op = 0;
         int opr;
-        op = userOpcode.checkOpcode();
+        int x = 0;
+
+        do {
+            op = userOpcode.checkOpcode();
+            if(op == -2) {
+                setUserCode();
+                x = 1;
+            }
+            else {
+                x = 0;
+            }
+        } while (x == 1);
         opr = userOperand.checkOperand();
         if(op == 0) {
             accA.setValue(opr);
         }
-        System.out.println("This should Accumulator A's value: " + accA.getValue() + "\n");
-    } 
-
-    public String getCode() {
-        return instruction;
-    }
+    } //end checkUserCode
 } //end Code

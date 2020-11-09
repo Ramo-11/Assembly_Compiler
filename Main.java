@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) {
+
+        clearScreen();
         ArrayList<User> users = new ArrayList<User>();
         ArrayList<Level> level = new ArrayList<Level>();
         ReadWrite load = new ReadWrite();
@@ -18,7 +20,6 @@ public class Main {
         clearScreen();
 
         viewProblem(level);
-       // getUserInput();
     } //end main
 
     public static int begin(ArrayList<User> users) {
@@ -30,7 +31,7 @@ public class Main {
             return userNum;
         }
         else if (userNum >= 0){
-            System.out.println("You are user number " + userNum + "\n");       
+            System.out.println("You are user number " + (userNum+1) + "\n");       
             return userNum;
         }
         else {
@@ -48,38 +49,8 @@ public class Main {
         System.out.println(level.get(i-1).getProblem() + "\n");
         save.UploadProblem(level);
         level.get(i-1).Start();
+        save.UploadUserSolution(level);
     } //end theProblem
-
-    //This function gets the opcode and the operand from the user
-    /*public static void getUserInput() {
-        String userInput;
-        Opcode userOpcode = new Opcode();
-        Operand userOperand = new Operand();
-
-        Scanner obj = new Scanner(System.in);
-        userInput = obj.next();
-        userOpcode.setCode(userInput);
-        userInput = obj.next();
-        userOperand.setCode(userInput);
-        setUserInput(userOpcode, userOperand);
-    }*/
-
-    //This function sets the opcode and the operand, and check if they are valid or not.
-    public static void setUserInput(Opcode userOpcode, Operand userOperand) {
-        int instNum;
-        int value;
-
-        instNum = userOpcode.checkOpcode();
-        value = userOperand.checkOperand();
-        //applyCode(instNum, value);
-    }
-
-    /*public static void applyCode(int instNum, int value) {
-        if(instNum == 0) {
-            Accumulator accA = new Accumulator();
-            accA.setValue(value);
-        } 
-    }*/
 
     public static void Wait(){
         try {

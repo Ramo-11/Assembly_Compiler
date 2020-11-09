@@ -16,10 +16,6 @@ public class Operand {
         this.instruction = instruction;
     }
     
-    public String getOperand() {
-        return instruction;
-    }
-
     public int checkOperand(){
         String temp; 
         ArrayList<Character> storeC = new ArrayList<Character>();
@@ -60,4 +56,8 @@ public class Operand {
         }
         //return -2;
     } //end checkOpcode
+    
+    public String getOperand() {
+        return instruction;
+    }
 } //end Operand
