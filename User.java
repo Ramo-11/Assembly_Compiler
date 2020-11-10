@@ -4,18 +4,18 @@ public class User {
 
     String name;
     int rank;
-    Level level;
+    ArrayList<Level> level;
 
     public User() {
         name = "0";
         rank = 0;
-        level = new Level();
+        level = new ArrayList<Level>();
     }
 
     public User(String name) {
         this.name = name;
         this.rank = 0;
-        level = new Level();
+        level = new ArrayList<Level>();
     }
     
     public void setRank(int rank) {

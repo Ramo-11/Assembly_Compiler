@@ -3,4 +3,4 @@ Load Accumulator A with the value 5
 Level 2
 Load Accumulator B with the value 7
 Level 3
-Load Accumulator X with the value 8, then add 5 to it
+Load Register x with the value 8

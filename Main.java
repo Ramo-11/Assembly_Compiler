@@ -7,20 +7,20 @@ public class Main {
 
         clearScreen();
         ArrayList<User> users = new ArrayList<User>();
-        ArrayList<Level> level = new ArrayList<Level>();
+        //ArrayList<Level> level = new ArrayList<Level>();
         ReadWrite load = new ReadWrite();
         int userNum;
 
         load.DownloadUser(users); //Download the information of all the users
-        load.DownloadProblem(level); //Download all the levels' information
-        load.DownloadUserSolution(level);
+        load.DownloadProblem(users); //Download all the levels' information
+        load.DownloadUserSolution(users); //Download users' solutions
 
         userNum = begin(users);  //Allow the user to log in or to be added to the system
 
         Wait();
         clearScreen();
 
-        menu(level);
+        menu(users, userNum);
     } //end main
 
     public static int begin(ArrayList<User> users) {
@@ -40,7 +40,7 @@ public class Main {
         }
     } //end begin
 
-    public static void menu(ArrayList<Level> level) {
+    public static void menu(ArrayList<User> users, int userNum) {
         int choice;
         Scanner obj = new Scanner(System.in);
         System.out.println("Please choose what you would like to do from the menu: ");
@@ -50,30 +50,32 @@ public class Main {
         choice = obj.nextInt();
         
         if(choice == 1) {
-            viewProblem(level);
+            viewProblem(users, userNum);
         }
         else if(choice == 2) {
-           viewUserProblemSolutions(level); 
+           //viewUserProblemSolutions(level); 
         }
         else if(choice == 3) {
-            checkProblemSolution(level);
+           // checkProblemSolution(level);
         }
         else {
             System.out.println("Invalid");
         }
     }
 
-    public static void viewProblem(ArrayList<Level> level) {
+    public static void viewProblem(ArrayList<User> users, int userNum) {
         ReadWrite save = new ReadWrite();
         Scanner myObj = new Scanner(System.in);
         int i;
+
         System.out.println("Which level do you want to view?");
         i = myObj.nextInt();
-        System.out.println("Level " + level.get(i-1).getCurrent() + "'s problem is: \n");
-        System.out.println(level.get(i-1).getProblem() + "\n");
-        save.UploadProblem(level);
-        level.get(i-1).Start();
-        save.UploadUserSolution(level);
+
+        System.out.println("Level " + users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
+        System.out.println(users.get(userNum).level.get(i-1).getProblem() + "\n");
+        users.get(userNum).level.get(i-1).Start();
+        save.UploadProblem(users);
+        save.UploadUserSolution(users);
     } //end theProblem
 
     public static void viewUserProblemSolutions(ArrayList<Level> level) {

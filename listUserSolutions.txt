@@ -1,0 +1,4 @@
+Omar
+LDAA #$7
+LDAA #$88
+LDX #$500
