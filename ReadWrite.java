@@ -116,19 +116,23 @@ public class ReadWrite {
         }
     } //end UploadUser
     
-    /*public void DownloadUserSolution(ArrayList<Level> level) {
+    public void DownloadUserSolution(ArrayList<Level> level) {
         try {
             File theFile = new File("UserSolutions.txt");
             Scanner input = new Scanner(theFile);
            
             String opcode;
             String operand;
-            String temp;
-            int problemNum;
-
-            while(input.hasNextLine()) {
+            String stringTemp;
+            int temp = 0;
+        
+            while(input.hasNext()) {
                 opcode = input.next();
-                level.add(new Level);
+                operand = input.next();
+            
+                level.get(temp).code.userOpcode.setOpcode(opcode);
+                level.get(temp).code.userOperand.setOperand(operand);
+                temp++;
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -146,7 +150,7 @@ public class ReadWrite {
                 }
                 else {
                     output.print(level.get(i).code.userOpcode.getOpcode());
-                    output.print("\t" + level.get(i).code.userOperand.getOperand() + "\n");
+                    output.print(" " + level.get(i).code.userOperand.getOperand() + "\n");
                 }
             }
             outFile.close();

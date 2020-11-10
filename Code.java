@@ -55,15 +55,20 @@ public class Code {
                 setUserCode();
                 x = 1;
             }
+            else if(((op == 2) || (op == 3)) && (opr > 65535)) {
+                System.out.println("Error: The value you are trying to load is too big!\n");
+                setUserCode();
+                x = 1;
+            }
             else {
                 x = 0;
             }
         } while(x == 1);
 
-        setAccumulators(op, opr);
+        setMemory(op, opr);
     } //end checkUserCode
 
-    public void setAccumulators(int opNum, int oprValue) {
+    public void setMemory(int opNum, int oprValue) {
         if(opNum == 0) { //LDAA
             accA.setValue(oprValue);
         }
