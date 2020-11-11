@@ -1,4 +1,16 @@
 Omar
-LDAA #$7
-LDAA #$88
-LDX #$500
+LDAA #5
+0 0
+0 0
+Hayley
+0 0
+0 0
+LDY #$89
+Najma
+0 0
+LDAB #$6
+0 0
+Nabeel
+LDAB #$99
+0 0
+0 0

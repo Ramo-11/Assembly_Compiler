@@ -7,7 +7,6 @@ public class Main {
 
         clearScreen();
         ArrayList<User> users = new ArrayList<User>();
-        //ArrayList<Level> level = new ArrayList<Level>();
         ReadWrite load = new ReadWrite();
         int userNum;
 
@@ -15,6 +14,8 @@ public class Main {
         load.DownloadProblem(users); //Download all the levels' information
         load.DownloadUserSolution(users); //Download users' solutions
 
+        //System.out.println("\nAfter download: first user: first problem: " + users.get(0).level.get(0).code.userOpcode.getOpcode() + " ");
+        //System.out.println(users.get(0).level.get(0).code.userOperand.getOperand() + "\n");
         userNum = begin(users);  //Allow the user to log in or to be added to the system
 
         Wait();
@@ -76,6 +77,9 @@ public class Main {
         users.get(userNum).level.get(i-1).Start();
         save.UploadProblem(users);
         save.UploadUserSolution(users);
+        //System.out.println("\nAfter Upload: first user: first problem: " + users.get(0).level.get(0).code.userOpcode.getOpcode() + " ");
+        //System.out.println(users.get(0).level.get(0).code.userOperand.getOperand() + "\n");
+
     } //end theProblem
 
     public static void viewUserProblemSolutions(ArrayList<Level> level) {

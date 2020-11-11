@@ -85,8 +85,6 @@ public class ReadWrite {
                 output.print("Level ");
                 output.print(users.get(i).level.get(i).getCurrent() + "\n");
                 output.print(users.get(i).level.get(i).getProblem() + "\n");
-                //System.out.println(users.get(i).level.get(i).getCurrent() + "\n");
-                //System.out.println(users.get(i).level.get(i).getProblem() + "\n");
             }
             outFile.close();
             output.close();
@@ -96,9 +94,7 @@ public class ReadWrite {
     } //end UploadUser
     
     public void DownloadUserSolution(ArrayList<User> users) {
-        int temp = 0;
         String tempName = "0";
-        for(int i = 0; i < users.size(); i++) {
             try {
                 File theFile = new File("listUserSolutions.txt");
                 Scanner input = new Scanner(theFile);
@@ -106,24 +102,18 @@ public class ReadWrite {
                 String opcode;
                 String operand;
                 
-                tempName = input.next();
-
-                if(tempName.equals(users.get(i).getName())) {
-                    while(input.hasNext()) {
+                for(int i = 0; i < users.size(); i++) {
+                    tempName = input.next();
+                    for(int k = 0; k < 3; k++) {
                         opcode = input.next();
                         operand = input.next();
-                        users.get(i).level.get(temp).code.userOpcode.setOpcode(opcode);
-                        users.get(i).level.get(temp).code.userOperand.setOperand(operand);
-                        temp++;
-                    } //end while
-                } //end if
-                else {
-                    continue;
-                }
+                        users.get(i).level.get(k).code.userOpcode.setOpcode(opcode);
+                        users.get(i).level.get(k).code.userOperand.setOperand(operand);
+                    } //end for
+                } //end for
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-        } //end for
     } //end DownloadUser*/
 
     public void UploadUserSolution(ArrayList<User> users) {
@@ -136,22 +126,17 @@ public class ReadWrite {
             for (int i = 0; i < users.size(); i++) {
                 count = 0;
                 for(int j = 0; j < users.get(i).level.size(); j++) {
-                    if(users.get(i).level.get(j).code.userOpcode.getOpcode().equals("0")) {
-                        break;
+                    if(count == 0){
+                        output.print(users.get(i).getName()+ "\n");
+                        count++;
+                        output.print(users.get(i).level.get(j).code.userOpcode.getOpcode());
+                        output.print(" " + users.get(i).level.get(j).code.userOperand.getOperand() + "\n");
                     }
                     else {
-                        if(count == 0){
-                            output.print(users.get(i).getName()+ "\n");
-                            count++;
-                            output.print(users.get(i).level.get(j).code.userOpcode.getOpcode());
-                            output.print(" " + users.get(i).level.get(j).code.userOperand.getOperand() + "\n");
-                        }
-                        else {
-                            output.print(users.get(i).level.get(j).code.userOpcode.getOpcode());
-                            output.print(" " + users.get(i).level.get(j).code.userOperand.getOperand() + "\n");
-                        }
+                        output.print(users.get(i).level.get(j).code.userOpcode.getOpcode());
+                        output.print(" " + users.get(i).level.get(j).code.userOperand.getOperand() + "\n");
                     } //end else
-                } //end for
+                } //end else
             } //end for
             outFile.close();
             output.close();
