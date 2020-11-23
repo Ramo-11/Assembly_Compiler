@@ -1,6 +1,8 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class Level {
+public class Level implements java.io.Serializable{
 
     int current;
     String problem;
@@ -29,7 +31,7 @@ public class Level {
     public void setProblem(String problem) {
         this.problem = problem;
     }
-
+    
     public String getProblem() {
         return problem;
     }

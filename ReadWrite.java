@@ -1,52 +1,34 @@
+import java.io.Serializable;
 import java.util.*;
 import java.io.*;
 
-public class ReadWrite {
+public class ReadWrite implements java.io.Serializable{
 
-    public void DownloadUser(ArrayList<User> users) {
+    public void laodUser(ArrayList<User> users) {
         try {
-            File theFile = new File("listUsers.txt");
-            Scanner input = new Scanner(theFile);
-            String name;
-            String rankTemp;
-            int rank;
-            int i = 0;
+            FileInputStream theFile = new FileInputStream("listUsers.txt");
+            ObjectInputStream in = new ObjectInputStream(theFile);
+            
+            users = (ArrayList)in.readObject();
 
-            while(input.hasNextLine()) {
-                name = input.nextLine();
-                rankTemp = input.nextLine();
-                rank = Integer.parseInt(rankTemp);
-                users.add(new User(name));
-                users.get(i).setRank(rank);
-                i++;
-            }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("IO exception in load user!!");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exception in load user!!");
         }
     } //end DownloadUser
 
-    public void UploadUser(ArrayList<User> users) {
+    public void saveUser(ArrayList<User> users) {
         try {
-            FileWriter outFile = new FileWriter("listUsers.txt", false);
-            PrintWriter output = new PrintWriter(outFile);
+            FileOutputStream outFile = new FileOutputStream("listUsers.txt", false);
+            ObjectOutputStream out = new ObjectOutputStream(outFile);
             
-            for (int i = 0; i < users.size(); i++) {
-                if (i == users.size() - 1) { 
-                    output.print(users.get(i).getName());
-                    output.print("\n");
-                    output.print(users.get(i).getRank());
-                }
-                else {
-                    output.print(users.get(i).getName());
-                    output.print("\n");
-                    output.print(users.get(i).getRank());
-                    output.print("\n");
-                }
-            }
+            out.writeObject(users);
+
             outFile.close();
-            output.close();
+            out.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("IO exception in saveUser!!");
         }
     } //end UploadUser
     

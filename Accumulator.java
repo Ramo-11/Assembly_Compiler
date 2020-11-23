@@ -1,6 +1,8 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class Accumulator {
+public class Accumulator implements java.io.Serializable{
 
     int value;
 

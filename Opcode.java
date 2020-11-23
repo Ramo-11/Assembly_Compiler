@@ -1,6 +1,8 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class Opcode {
+public class Opcode implements java.io.Serializable{
     ArrayList<String> definedInstructions = new ArrayList<String>();
     String instruction;
 

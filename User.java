@@ -1,13 +1,16 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class User {
+public class User implements java.io.Serializable{
 
     String name;
     int rank;
     ArrayList<Level> level;
+    ReadWrite s = new ReadWrite();
 
     public User() {
-        name = "0";
+        name = "user";
         rank = 0;
         level = new ArrayList<Level>();
     }
@@ -53,7 +56,7 @@ public class User {
             
             if (a == 1) {
                 users.add(new User(tempName));
-                save.UploadUser(users);       
+                s.saveUser(users);       
                 System.out.println("Awesome! you have been added to our system.");
                 return -1;
             }

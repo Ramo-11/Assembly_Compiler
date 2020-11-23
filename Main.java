@@ -1,34 +1,37 @@
 import java.util.*;
+import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+    ArrayList<User> users = new ArrayList<User>();
+    
+    public void loadInfo() {
+        this.loadUser();    
+        //System.out.println("Test: " + users.get(0).getName());
+    }
 
     public static void main(String[] args) {
-
-        clearScreen();
-        ArrayList<User> users = new ArrayList<User>();
-        ReadWrite load = new ReadWrite();
+        Main m = new Main();
         int userNum;
 
-        load.DownloadUser(users); //Download the information of all the users
-        load.DownloadProblem(users); //Download all the levels' information
-        load.DownloadUserSolution(users); //Download users' solutions
+        clearScreen();
+
+        m.loadInfo();
 
         //System.out.println("\nAfter download: first user: first problem: " + users.get(0).level.get(0).code.userOpcode.getOpcode() + " ");
         //System.out.println(users.get(0).level.get(0).code.userOperand.getOperand() + "\n");
-        userNum = begin(users);  //Allow the user to log in or to be added to the system
+        userNum = m.begin();  //Allow the user to log in or to be added to the system
 
         Wait();
-        clearScreen();
-
-        menu(users, userNum);
+        
+        //menu(userNum);
     } //end main
 
-    public static int begin(ArrayList<User> users) {
+    public int begin() {
         int userNum;;
         User option = new User();
         
-        userNum = option.login(users);
+        userNum = option.login(this.users);
         if (userNum == -1) { //This means that the user has been added to the System
             return userNum;
         }
@@ -41,7 +44,7 @@ public class Main {
         }
     } //end begin
 
-    public static void menu(ArrayList<User> users, int userNum) {
+    /*public static void menu(int userNum) {
         int choice;
         Scanner obj = new Scanner(System.in);
         System.out.println("Please choose what you would like to do from the menu: ");
@@ -51,7 +54,7 @@ public class Main {
         choice = obj.nextInt();
         
         if(choice == 1) {
-            viewProblem(users, userNum);
+            viewProblem(userNum);
         }
         else if(choice == 2) {
            //viewUserProblemSolutions(level); 
@@ -64,7 +67,7 @@ public class Main {
         }
     }
 
-    public static void viewProblem(ArrayList<User> users, int userNum) {
+    public static void viewProblem(int userNum) {
         ReadWrite save = new ReadWrite();
         Scanner myObj = new Scanner(System.in);
         int i;
@@ -72,14 +75,11 @@ public class Main {
         System.out.println("Which level do you want to view?");
         i = myObj.nextInt();
 
-        System.out.println("Level " + users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
-        System.out.println(users.get(userNum).level.get(i-1).getProblem() + "\n");
-        users.get(userNum).level.get(i-1).Start();
-        save.UploadProblem(users);
-        save.UploadUserSolution(users);
-        //System.out.println("\nAfter Upload: first user: first problem: " + users.get(0).level.get(0).code.userOpcode.getOpcode() + " ");
-        //System.out.println(users.get(0).level.get(0).code.userOperand.getOperand() + "\n");
-
+        System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
+        System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
+        this.users.get(userNum).level.get(i-1).Start();
+        save.UploadProblem(this.users);
+        save.UploadUserSolution(this.users);
     } //end theProblem
 
     public static void viewUserProblemSolutions(ArrayList<Level> level) {
@@ -114,6 +114,22 @@ public class Main {
             }
         }
     } //end checkProblemSolution
+    */
+    public void loadUser() {
+        try {
+            FileInputStream theFile = new FileInputStream("listUsers.txt");
+            ObjectInputStream in = new ObjectInputStream(theFile);
+            
+            this.users = (ArrayList)in.readObject();
+            
+            System.out.println("Load is complete <3");
+        } catch (IOException e) {
+            System.out.println("IO exception in load user!!");
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exception in load user!!");
+        }
+    } //end loadUser
 
     public static void Wait(){
         try {

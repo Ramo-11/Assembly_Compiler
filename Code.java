@@ -1,6 +1,8 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class Code {
+public class Code implements java.io.Serializable{
 
     String instruction;
     Opcode userOpcode = new Opcode();

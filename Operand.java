@@ -1,6 +1,8 @@
 import java.util.*;
+import java.io.*;
+import java.io.Serializable;
 
-public class Operand {
+public class Operand implements java.io.Serializable{
 
     char immediate;
     char hex;
