@@ -4,20 +4,6 @@ import java.io.*;
 
 public class ReadWrite implements java.io.Serializable{
 
-    public void laodUser(ArrayList<User> users) {
-        try {
-            FileInputStream theFile = new FileInputStream("listUsers.txt");
-            ObjectInputStream in = new ObjectInputStream(theFile);
-            
-            users = (ArrayList)in.readObject();
-
-        } catch (IOException e) {
-            System.out.println("IO exception in load user!!");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Class not found exception in load user!!");
-        }
-    } //end DownloadUser
-
     public void saveUser(ArrayList<User> users) {
         try {
             FileOutputStream outFile = new FileOutputStream("listUsers.txt", false);
@@ -32,7 +18,7 @@ public class ReadWrite implements java.io.Serializable{
         }
     } //end UploadUser
     
-    public void DownloadProblem(ArrayList<User> users) {
+    public void loadProblem(ArrayList<User> users) {
             for(int j = 0; j < users.size(); j++) {
                 try {
                 File theFile = new File("listProblems.txt");
@@ -56,24 +42,25 @@ public class ReadWrite implements java.io.Serializable{
                 System.out.println(e.getMessage());
             }
         } //end for
-    } //end DownloadUser
+    } //end loadProblem
 
-    public void UploadProblem(ArrayList<User> users) {
+    public void saveProblem(ArrayList<User> users) {
         try {
             FileWriter outFile = new FileWriter("listProblems.txt", false);
             PrintWriter output = new PrintWriter(outFile);
             
-            for (int i = 0; i < 3; i++) {
+            for(int i = 0; i < 3; i++) {
                 output.print("Level ");
                 output.print(users.get(i).level.get(i).getCurrent() + "\n");
                 output.print(users.get(i).level.get(i).getProblem() + "\n");
             }
+
             outFile.close();
             output.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("IO exception in save problem!!");
         }
-    } //end UploadUser
+    } //end saveProblem
     
     public void DownloadUserSolution(ArrayList<User> users) {
         String tempName = "0";

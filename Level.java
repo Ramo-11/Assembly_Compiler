@@ -19,6 +19,30 @@ public class Level implements java.io.Serializable{
         this.problem = problem;
         code = new Code();
     }
+    
+    public int menu() {
+        int choice;
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Please choose what you would like to do from the menu: ");
+        System.out.println("1- Solve a problem");
+        System.out.println("2- View a previous solution");
+        System.out.println("3- Check your solutions");
+        choice = obj.nextInt();
+        
+        if(choice == 1) {
+            return 1;
+        }
+        else if(choice == 2) {
+           //viewUserProblemSolutions(level); 
+        }
+        else if(choice == 3) {
+           // checkProblemSolution(level);
+        }
+        else {
+            System.out.println("Invalid");
+        }
+        return 55;
+    }
 
     public void setCurrent(int current) {
         this.current = current;

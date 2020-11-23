@@ -6,25 +6,35 @@ public class Main {
     ArrayList<User> users = new ArrayList<User>();
     
     public void loadInfo() {
-        this.loadUser();    
+        ReadWrite r = new ReadWrite();
+
+        this.loadUser();
+        r.loadProblem(this.users);
+
         //System.out.println("Test: " + users.get(0).getName());
     }
 
+    /*public void begin2() {
+        int menuChoice;
+        Level l = new Level();
+        menuChoice = 
+    }*/
+
     public static void main(String[] args) {
         Main m = new Main();
+        Level l = new Level();
         int userNum;
-
+        int menuChoice;
+        
         clearScreen();
 
         m.loadInfo();
-
-        //System.out.println("\nAfter download: first user: first problem: " + users.get(0).level.get(0).code.userOpcode.getOpcode() + " ");
-        //System.out.println(users.get(0).level.get(0).code.userOperand.getOperand() + "\n");
         userNum = m.begin();  //Allow the user to log in or to be added to the system
 
         Wait();
         
-        //menu(userNum);
+        menuChoice = l.menu();
+        m.viewProblem(userNum);
     } //end main
 
     public int begin() {
@@ -44,30 +54,7 @@ public class Main {
         }
     } //end begin
 
-    /*public static void menu(int userNum) {
-        int choice;
-        Scanner obj = new Scanner(System.in);
-        System.out.println("Please choose what you would like to do from the menu: ");
-        System.out.println("1- Solve a problem");
-        System.out.println("2- View a previous solution");
-        System.out.println("3- Check your solutions");
-        choice = obj.nextInt();
-        
-        if(choice == 1) {
-            viewProblem(userNum);
-        }
-        else if(choice == 2) {
-           //viewUserProblemSolutions(level); 
-        }
-        else if(choice == 3) {
-           // checkProblemSolution(level);
-        }
-        else {
-            System.out.println("Invalid");
-        }
-    }
-
-    public static void viewProblem(int userNum) {
+    public void viewProblem(int userNum) {
         ReadWrite save = new ReadWrite();
         Scanner myObj = new Scanner(System.in);
         int i;
@@ -78,7 +65,7 @@ public class Main {
         System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
         System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
         this.users.get(userNum).level.get(i-1).Start();
-        save.UploadProblem(this.users);
+        save.saveProblem(this.users);
         save.UploadUserSolution(this.users);
     } //end theProblem
 
@@ -114,7 +101,7 @@ public class Main {
             }
         }
     } //end checkProblemSolution
-    */
+    
     public void loadUser() {
         try {
             FileInputStream theFile = new FileInputStream("listUsers.txt");
