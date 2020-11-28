@@ -58,7 +58,8 @@ public class User implements java.io.Serializable{
                 users.add(new User(tempName));
                 s.saveUser(users);       
                 System.out.println("Awesome! you have been added to our system.");
-                return -1;
+                a = users.size() - 1;
+                return a;
             }
             else if (a == 2) {
                 System.exit(0);

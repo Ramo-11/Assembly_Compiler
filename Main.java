@@ -8,17 +8,9 @@ public class Main {
     public void loadInfo() {
         ReadWrite r = new ReadWrite();
 
-        this.loadUser();
-        r.loadProblem(this.users);
-
-        //System.out.println("Test: " + users.get(0).getName());
+        this.loadUser(); //loads the users
+        r.loadProblem(this.users); //loads the problems
     }
-
-    /*public void begin2() {
-        int menuChoice;
-        Level l = new Level();
-        menuChoice = 
-    }*/
 
     public static void main(String[] args) {
         Main m = new Main();
@@ -29,8 +21,8 @@ public class Main {
         clearScreen();
 
         m.loadInfo();
-        userNum = m.begin();  //Allow the user to log in or to be added to the system
-
+        userNum = m.begin();  //Allow the user to log in
+        
         Wait();
         
         menuChoice = l.menu();
@@ -38,21 +30,13 @@ public class Main {
     } //end main
 
     public int begin() {
-        int userNum;;
-        User option = new User();
-        
-        userNum = option.login(this.users);
-        if (userNum == -1) { //This means that the user has been added to the System
-            return userNum;
-        }
-        else if (userNum >= 0){
-            System.out.println("You are user number " + (userNum+1) + "\n");       
-            return userNum;
-        }
-        else {
-            return userNum;
-        }
-    } //end begin
+        int userNum;
+        User u = new User();
+
+        userNum = u.login(this.users);
+        System.out.println("You are user number " + (userNum+1) + "\n");       
+        return userNum;
+    }
 
     public void viewProblem(int userNum) {
         ReadWrite save = new ReadWrite();
@@ -61,7 +45,7 @@ public class Main {
 
         System.out.println("Which level do you want to view?");
         i = myObj.nextInt();
-
+        
         System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
         System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
         this.users.get(userNum).level.get(i-1).Start();
