@@ -49,6 +49,8 @@ public class ReadWrite implements java.io.Serializable{
             FileWriter outFile = new FileWriter("listProblems.txt", false);
             PrintWriter output = new PrintWriter(outFile);
             
+            System.out.println("Size of level: " + users.get(0).level.size() + " end \n");
+
             for(int i = 0; i < users.get(0).level.size(); i++) {
                 output.print("Level ");
                 output.print(users.get(i).level.get(i).getCurrent() + "\n");

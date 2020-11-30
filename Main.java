@@ -26,7 +26,15 @@ public class Main {
         Wait();
         
         menuChoice = l.menu();
-        m.viewProblem(userNum);
+        if(menuChoice == 1) {
+            m.viewProblem(userNum);
+        }    
+        else if(menuChoice == 2) {
+            m.viewUserSolutions(userNum);
+        }
+        else if(menuChoice == 3) {
+            //Do something
+        }
     } //end main
 
     public int begin() {
@@ -53,14 +61,14 @@ public class Main {
         save.UploadUserSolution(this.users);
     } //end theProblem
 
-    public static void viewUserProblemSolutions(ArrayList<Level> level) {
+    public void viewUserSolutions(int userNum) {
         ReadWrite save = new ReadWrite();
         Scanner myObj = new Scanner(System.in);
         int i;
         System.out.println("Which level's solution do you want to view?");
         i = myObj.nextInt();
-        System.out.println("\nYour solution for Level " + level.get(i-1).getCurrent() + " is: \n");
-        System.out.println(level.get(i-1).code.userOpcode.getOpcode() + "\t" + level.get(i-1).code.userOperand.getOperand());
+        System.out.println("\nYour solution for Level " + this.users.get(userNum).level.get(i-1).getCurrent() + " is: \n");
+        System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.getOperand());
     } //end viewUserProblemSolutions
 
     public static void checkProblemSolution(ArrayList<Level> level) {
