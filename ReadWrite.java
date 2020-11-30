@@ -6,18 +6,20 @@ public class ReadWrite implements java.io.Serializable{
 
     public void saveUser(ArrayList<User> users) {
         try {
-            FileOutputStream outFile = new FileOutputStream("listUsers.txt", false);
+            FileOutputStream outFile = new FileOutputStream("listUsers.txt");
             ObjectOutputStream out = new ObjectOutputStream(outFile);
-            
+
             out.writeObject(users);
 
             outFile.close();
             out.close();
-        } catch (IOException e) {
-            System.out.println("IO exception in saveUser!!");
+
+        } catch(IOException e) {
+            System.out.println("IO exception in saveUser!");
+            System.out.println(e.getMessage());
         }
-    } //end UploadUser
-    
+    } //end saveUser
+
     public void loadProblem(ArrayList<User> users) {
             for(int j = 0; j < users.size(); j++) {
                 try {
@@ -44,26 +46,6 @@ public class ReadWrite implements java.io.Serializable{
         } //end for
     } //end loadProblem
 
-    public void saveProblem(ArrayList<User> users) {
-        try {
-            FileWriter outFile = new FileWriter("listProblems.txt", false);
-            PrintWriter output = new PrintWriter(outFile);
-            
-            System.out.println("Size of level: " + users.get(0).level.size() + " end \n");
-
-            for(int i = 0; i < users.get(0).level.size(); i++) {
-                output.print("Level ");
-                output.print(users.get(i).level.get(i).getCurrent() + "\n");
-                output.print(users.get(i).level.get(i).getProblem() + "\n");
-            }
-
-            outFile.close();
-            output.close();
-        } catch (IOException e) {
-            System.out.println("IO exception in save problem!!");
-        }
-    } //end saveProblem
-    
     public void DownloadUserSolution(ArrayList<User> users) {
         String tempName = "0";
             try {

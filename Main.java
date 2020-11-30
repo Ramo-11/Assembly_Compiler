@@ -57,7 +57,6 @@ public class Main {
         System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
         System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
         this.users.get(userNum).level.get(i-1).Start();
-        save.saveProblem(this.users);
         save.UploadUserSolution(this.users);
     } //end theProblem
 
