@@ -33,7 +33,7 @@ public class Level implements java.io.Serializable{
             return 1;
         }
         else if(choice == 2) {
-           //viewUserProblemSolutions(level); 
+           return 2; 
         }
         else if(choice == 3) {
            // checkProblemSolution(level);

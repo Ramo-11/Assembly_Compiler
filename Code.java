@@ -25,10 +25,10 @@ public class Code implements java.io.Serializable{
         userOperand.setOperand(userInput);
     }
 
-    public void setUserCode(String a, String b) {
+    /*public void setUserCode(String a, String b) {
         userOpcode.setOpcode(a);
         userOperand.setOperand(b);
-    }
+    }*/
 
     public void checkUserCode() {
         int op = 0;

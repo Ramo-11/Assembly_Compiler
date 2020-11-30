@@ -26,8 +26,9 @@ public class Main {
         Wait();
         
         menuChoice = l.menu();
+        System.out.println("Test: " + menuChoice);
         if(menuChoice == 1) {
-            m.viewProblem(userNum);
+            m.solveProblem(userNum);
         }    
         else if(menuChoice == 2) {
             m.viewUserSolutions(userNum);
@@ -46,7 +47,7 @@ public class Main {
         return userNum;
     }
 
-    public void viewProblem(int userNum) {
+    public void solveProblem(int userNum) {
         ReadWrite save = new ReadWrite();
         Scanner myObj = new Scanner(System.in);
         int i;
@@ -57,15 +58,14 @@ public class Main {
         System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
         System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
         this.users.get(userNum).level.get(i-1).Start();
-        save.UploadUserSolution(this.users);
+        save.saveUser(this.users);
     } //end theProblem
 
     public void viewUserSolutions(int userNum) {
-        ReadWrite save = new ReadWrite();
-        Scanner myObj = new Scanner(System.in);
+        Scanner Obj = new Scanner(System.in);
         int i;
         System.out.println("Which level's solution do you want to view?");
-        i = myObj.nextInt();
+        i = Obj.nextInt();
         System.out.println("\nYour solution for Level " + this.users.get(userNum).level.get(i-1).getCurrent() + " is: \n");
         System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.getOperand());
     } //end viewUserProblemSolutions

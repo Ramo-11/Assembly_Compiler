@@ -46,7 +46,7 @@ public class ReadWrite implements java.io.Serializable{
         } //end for
     } //end loadProblem
 
-    public void DownloadUserSolution(ArrayList<User> users) {
+    /*public void loadUserSolution(ArrayList<User> users) {
         String tempName = "0";
             try {
                 File theFile = new File("listUserSolutions.txt");
@@ -67,9 +67,9 @@ public class ReadWrite implements java.io.Serializable{
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-    } //end DownloadUser*/
+    } //end loadUserSolution
 
-    public void UploadUserSolution(ArrayList<User> users) {
+    public void saveUserSolution(ArrayList<User> users) {
         try {
             FileWriter outFile = new FileWriter("listUserSolutions.txt", false);
             PrintWriter output = new PrintWriter(outFile);
@@ -96,5 +96,5 @@ public class ReadWrite implements java.io.Serializable{
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    } //end UploadUser
+    } //end saveUserSolution*/
 } //end ReadWrite
