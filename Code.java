@@ -5,25 +5,46 @@ import java.io.Serializable;
 public class Code implements java.io.Serializable{
 
     String instruction;
-    Opcode userOpcode = new Opcode();
-    Operand userOperand = new Operand();
+    ArrayList<Opcode> userOpcode;
+    ArrayList<Operand> userOperand;
     Accumulator accA = new Accumulator();
     Accumulator accB = new Accumulator();
     Register regX = new Register();
 
     public Code() {
         instruction = "0";
+        userOpcode = new ArrayList<Opcode>();
+        userOperand = new ArrayList<Operand>();
     }
     
     public void setUserCode(){
         System.out.println("Please enter your solution to the problem: \n");
-        String userInput;
+        String userInput = "0";
+        int i = 0;
+
+        while(!userInput.equals("q")) {
+            userOpcode.add(new Opcode());
+            userOperand.add(new Operand());
+            Scanner obj = new Scanner(System.in);
+            userInput = obj.next();
+            userOpcode.get(i).setOpcode(userInput);
+            userInput = obj.next();
+            userOperand.get(i).setOperand(userInput);
+            i++;
+        }
+    }
+    
+    /*public void setUserCode(){
+        System.out.println("Please enter your solution to the problem: \n");
+        String userInput = "0";
+
         Scanner obj = new Scanner(System.in);
         userInput = obj.next();
         userOpcode.setOpcode(userInput);
         userInput = obj.next();
         userOperand.setOperand(userInput);
-    }
+        
+    }*/
 
     /*public void setUserCode(String a, String b) {
         userOpcode.setOpcode(a);
@@ -33,10 +54,11 @@ public class Code implements java.io.Serializable{
     public void checkUserCode() {
         int op = 0;
         int opr;
+        int i = 0;
         int x = 0;
 
         do {
-            op = userOpcode.checkOpcode();
+            op = userOpcode.get(i).checkOpcode();
             if(op == -2) {
                 setUserCode();
                 x = 1;
@@ -47,7 +69,7 @@ public class Code implements java.io.Serializable{
         } while(x == 1);
 
         do {
-            opr = userOperand.checkOperand();
+            opr = userOperand.get(i).checkOperand();
             if(opr == -1) {
                 setUserCode();
                 x = 1;

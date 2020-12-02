@@ -22,11 +22,11 @@ public class Main {
 
         m.loadInfo();
         userNum = m.begin();  //Allow the user to log in
+        m.loadInfo();
         
         Wait();
         
         menuChoice = l.menu();
-        System.out.println("Test: " + menuChoice);
         if(menuChoice == 1) {
             m.solveProblem(userNum);
         }    
@@ -55,19 +55,30 @@ public class Main {
         System.out.println("Which level do you want to view?");
         i = myObj.nextInt();
         
-        System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
-        System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
-        this.users.get(userNum).level.get(i-1).Start();
-        save.saveUser(this.users);
+        if(i > 3) {
+            System.out.println("There isn't that many levels in this program yet!\n");
+        }
+        else {
+            System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
+            System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
+            this.users.get(userNum).level.get(i-1).Start();
+            save.saveUser(this.users);
+        }
     } //end theProblem
 
     public void viewUserSolutions(int userNum) {
         Scanner Obj = new Scanner(System.in);
         int i;
+        int codeCC = 0;
+        int holdSize;
+
+        holdSize = users.get(0).level.get(0).code.userOpcode.size();
         System.out.println("Which level's solution do you want to view?");
         i = Obj.nextInt();
         System.out.println("\nYour solution for Level " + this.users.get(userNum).level.get(i-1).getCurrent() + " is: \n");
-        System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.getOperand());
+        for(codeCC = 0; codeCC < holdSize - 1; codeCC++) {
+            System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.get(codeCC).getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.get(codeCC).getOperand());
+        }
     } //end viewUserProblemSolutions
 
     public static void checkProblemSolution(ArrayList<Level> level) {
@@ -100,7 +111,7 @@ public class Main {
             
             this.users = (ArrayList)in.readObject();
             
-            System.out.println("Load is complete <3");
+            //System.out.println("Load is complete <3");
         } catch (IOException e) {
             System.out.println("IO exception in load user!!");
             System.out.println(e.getMessage());
