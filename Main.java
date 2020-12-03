@@ -79,6 +79,9 @@ public class Main {
         
         System.out.println("\nYour solution for Level " + this.users.get(userNum).level.get(i-1).getCurrent() + " is: \n");
         for(codeCC = 0; codeCC < holdSize - 1; codeCC++) {
+            if(this.users.get(userNum).level.get(i-1).code.userOpcode.get(codeCC).getOpcode().equals("0")) {
+            continue;
+            }
             System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.get(codeCC).getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.get(codeCC).getOperand());
         }
     } //end viewUserSolutions

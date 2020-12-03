@@ -6,7 +6,6 @@ public class Code implements java.io.Serializable{
 
     String instruction;
     int cc = 0;     //This counter is for the line of code
-    int cc1 = 0;
     ArrayList<Opcode> userOpcode;
     ArrayList<Operand> userOperand;
     Accumulator accA = new Accumulator();
@@ -26,7 +25,6 @@ public class Code implements java.io.Serializable{
         int i = 0;
         int flag1 = 0;
         int flag2 = 0;
-        int t = 1;
 
         while(!userInput.equals("q")) {
             userOpcode.add(new Opcode());
@@ -42,7 +40,6 @@ public class Code implements java.io.Serializable{
             flag1 = checkUserOpcode();
             flag2 = checkUserOperand();
             if(flag1 == -2 || flag2 == -1) {
-                //t = 1;          //This will help us not create any unnessary opcodes or operands
                 continue;        
             }
             i++;
@@ -52,7 +49,7 @@ public class Code implements java.io.Serializable{
     
     public int checkUserOpcode() {
         int op = 0;
-        
+       
         op = userOpcode.get(cc).checkOpcode();
         return op;
         //setMemory(op, opr);
