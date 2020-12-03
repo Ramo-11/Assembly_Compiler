@@ -72,14 +72,16 @@ public class Main {
         int codeCC = 0;
         int holdSize;
 
-        holdSize = users.get(0).level.get(0).code.userOpcode.size();
         System.out.println("Which level's solution do you want to view?");
         i = Obj.nextInt();
+        holdSize = users.get(userNum).level.get(i-1).code.userOpcode.size();
+        
+        
         System.out.println("\nYour solution for Level " + this.users.get(userNum).level.get(i-1).getCurrent() + " is: \n");
         for(codeCC = 0; codeCC < holdSize - 1; codeCC++) {
             System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.get(codeCC).getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.get(codeCC).getOperand());
         }
-    } //end viewUserProblemSolutions
+    } //end viewUserSolutions
 
     public static void checkProblemSolution(ArrayList<Level> level) {
         Scanner obj = new Scanner(System.in);

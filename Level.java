@@ -62,6 +62,6 @@ public class Level implements java.io.Serializable{
     
     public void Start() {
         code.setUserCode(); //Get the input from the user and stores it
-        code.checkUserCode(); //Does the operation of the code
+        //code.checkUserCode(); //Does the operation of the code
     }
 } //end Level

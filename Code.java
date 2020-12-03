@@ -27,30 +27,17 @@ public class Code implements java.io.Serializable{
             userOperand.add(new Operand());
             Scanner obj = new Scanner(System.in);
             userInput = obj.next();
+            if(userInput.equals("q")) {
+                break;
+            }
             userOpcode.get(i).setOpcode(userInput);
             userInput = obj.next();
             userOperand.get(i).setOperand(userInput);
+            checkUserCode();
             i++;
         }
     }
     
-    /*public void setUserCode(){
-        System.out.println("Please enter your solution to the problem: \n");
-        String userInput = "0";
-
-        Scanner obj = new Scanner(System.in);
-        userInput = obj.next();
-        userOpcode.setOpcode(userInput);
-        userInput = obj.next();
-        userOperand.setOperand(userInput);
-        
-    }*/
-
-    /*public void setUserCode(String a, String b) {
-        userOpcode.setOpcode(a);
-        userOperand.setOperand(b);
-    }*/
-
     public void checkUserCode() {
         int op = 0;
         int opr;
