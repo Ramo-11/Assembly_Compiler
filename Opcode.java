@@ -41,7 +41,7 @@ public class Opcode implements java.io.Serializable{
             System.out.println(e.getMessage());
             return -2;
         }
-        return -2;
+        return -3;
     } //end checkOpcode
     
     public String getOpcode() {
