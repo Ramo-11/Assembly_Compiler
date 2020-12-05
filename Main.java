@@ -17,6 +17,7 @@ public class Main {
         Level l = new Level();
         int userNum;
         int menuChoice;
+        boolean keepGoing = true;
         
         clearScreen();
 
@@ -26,16 +27,23 @@ public class Main {
         
         Wait();
         
-        menuChoice = l.menu();
-        if(menuChoice == 1) {
-            m.solveProblem(userNum);
-        }    
-        else if(menuChoice == 2) {
-            m.viewUserSolutions(userNum);
-        }
-        else if(menuChoice == 3) {
-            m.checkProblemSolution(userNum);
-        }
+        while(keepGoing) {
+            menuChoice = l.menu();
+            if(menuChoice == 1) {
+                m.solveProblem(userNum);
+            }    
+            else if(menuChoice == 2) {
+                m.viewUserSolutions(userNum);
+                Wait();
+            }
+            else if(menuChoice == 3) {
+                m.checkProblemSolution(userNum);
+                Wait();
+            }
+            else {
+                keepGoing = false;
+            }
+        } //end while
     } //end main
 
     public int begin() {
@@ -43,7 +51,7 @@ public class Main {
         User u = new User();
 
         userNum = u.login(this.users);
-        System.out.println("You are user number " + (userNum+1) + "\n");       
+        System.out.println("You are user number " + (userNum+1));       
         return userNum;
     }
 
@@ -102,43 +110,58 @@ public class Main {
         x = obj.nextInt();
 
         if(x == 1){ 
-            if(users.get(userNum).level.get(x-1).code.accA.getValue() == 4) {
+            if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
+                System.out.println("You have not tried solving this problem yet!");
+            }
+            else if(users.get(userNum).level.get(x-1).code.accA.getValue() == 4) {
                 System.out.println("Your answer to problem " + x + " is correct");
             }
             else {
-                System.out.println("Nope\n");
+                System.out.println("Your answer is incorrect. Please try again!\n");
             }
         }
         else if(x == 2) {
-            if((users.get(userNum).level.get(x-1).code.accB.getValue() == 11) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 11)) {
+            if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
+                System.out.println("You have not tried solving this problem yet!");
+            }
+            else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 11) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 11)) {
                 System.out.println("Your answer to problem " + x + " is correct");
             }
             else {
-                System.out.println("Nope\n");
+                System.out.println("Your answer is incorrect. Please try again!\n");
             }
         }
         else if(x == 3) {
-            if(users.get(userNum).level.get(x-1).code.regY.getValue() == 22) {
+            if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
+                System.out.println("You have not tried solving this problem yet!");
+            }
+            else if(users.get(userNum).level.get(x-1).code.regY.getValue() == 22) {
                 System.out.println("Your answer to problem " + x + " is correct");
             }
             else {
-                System.out.println("Nope\n");
+                System.out.println("Your answer is incorrect. Please try again!\n");
             }
         }
         else if(x == 4) {
-            if((users.get(userNum).level.get(x-1).code.accB.getValue() == 12) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 12)) {
+            if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
+                System.out.println("You have not tried solving this problem yet!");
+            }
+            else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 12) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 12)) {
                 System.out.println("Your answer to problem " + x + " is correct");
             }
             else {
-                System.out.println("Nope\n");
+                System.out.println("Your answer is incorrect. Please try again!\n");
             }
         }
         else if(x == 5) {
-            if((users.get(userNum).level.get(x-1).code.accA.getValue() == 5) && users.get(userNum).level.get(x-1).code.accB.getValue() == 20) {
+            if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
+                System.out.println("You have not tried solving this problem yet!");
+            }
+            else if((users.get(userNum).level.get(x-1).code.accA.getValue() == 5) && users.get(userNum).level.get(x-1).code.accB.getValue() == 20) {
                 System.out.println("Your answer to problem " + x + " is correct");
             }
             else {
-                System.out.println("Nope\n");
+                System.out.println("Your answer is incorrect. Please try again!\n");
             }
         }
     } //end checkProblemSolution
@@ -150,7 +173,6 @@ public class Main {
             
             this.users = (ArrayList)in.readObject();
             
-            //System.out.println("Load is complete <3");
         } catch (IOException e) {
             System.out.println("IO exception in load user!!");
             System.out.println(e.getMessage());

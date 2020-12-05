@@ -23,25 +23,14 @@ public class Level implements java.io.Serializable{
     public int menu() {
         int choice;
         Scanner obj = new Scanner(System.in);
-        System.out.println("Please choose what you would like to do from the menu: ");
+        System.out.println("\nPlease choose what you would like to do from the menu: ");
         System.out.println("1- Solve a problem");
         System.out.println("2- View a previous solution");
         System.out.println("3- Check your solutions");
+        System.out.println("4- Exit");
         choice = obj.nextInt();
         
-        if(choice == 1) {
-            return 1;
-        }
-        else if(choice == 2) {
-           return 2; 
-        }
-        else if(choice == 3) {
-            return 3;
-        }
-        else {
-            System.out.println("Invalid");
-        }
-        return 55;
+        return choice;
     }
 
     public void setCurrent(int current) {
@@ -62,6 +51,6 @@ public class Level implements java.io.Serializable{
     
     public void Start() {
         code.setUserCode(); //Get the input from the user and stores it
-        //code.checkUserCode(); //Does the operation of the code
+        code.resetCounter();
     }
 } //end Level

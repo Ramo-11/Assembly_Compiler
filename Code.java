@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Code implements java.io.Serializable{
 
-    String instruction;
-    int cc = 0;     //This counter is for the line of code
+    //String instruction;
+    int cc;     //This counter is for the line of code
     ArrayList<Opcode> userOpcode;
     ArrayList<Operand> userOperand;
     Accumulator accA = new Accumulator();
@@ -14,9 +14,10 @@ public class Code implements java.io.Serializable{
     Register regY = new Register();
 
     public Code() {
-        instruction = "0";
+        //instruction = "0";
         userOpcode = new ArrayList<Opcode>();
         userOperand = new ArrayList<Operand>();
+        cc = 0;
     }
     
     public void setUserCode(){
@@ -56,7 +57,6 @@ public class Code implements java.io.Serializable{
     
     public int checkUserOpcode() {
         int op = 0;
-       
         op = userOpcode.get(cc).checkOpcode();
         return op;
     } //end checkUserCode
@@ -93,7 +93,7 @@ public class Code implements java.io.Serializable{
         else if(opNum == 15) { //INY
             regY.incValue();
         }
-    }
+    } //end setMemoryOpcode
 
     public void setMemory(int opNum, int oprValue) {
         if(opNum == 0) { //LDAA
@@ -120,5 +120,9 @@ public class Code implements java.io.Serializable{
         else if(opNum == 7) { //ADY
             regY.addValue(oprValue);
         }
-    } //end Accumulators
+    } //end setMemory
+
+    public void resetCounter() {
+        cc = 0;
+    }
 } //end Code
