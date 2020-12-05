@@ -52,14 +52,14 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         int i;
 
-        System.out.println("Which level do you want to view?");
+        System.out.println("Which level do you want to view? (There are currently 5 levels available)");
         i = myObj.nextInt();
         
-        if(i > 3) {
+        if(i > 5) {
             System.out.println("There isn't that many levels in this program yet!\n");
         }
         else {
-            System.out.println("Level " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
+            System.out.println("\nLevel " + this.users.get(userNum).level.get(i-1).getCurrent() + "'s problem is: \n");
             System.out.println(this.users.get(userNum).level.get(i-1).getProblem() + "\n");
             this.users.get(userNum).level.get(i-1).Start();
             save.saveUser(this.users);

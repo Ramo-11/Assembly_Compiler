@@ -20,7 +20,7 @@ public class Code implements java.io.Serializable{
     }
     
     public void setUserCode(){
-        System.out.println("\nPlease enter your solution to the problem (Press q to stop): \n");
+        System.out.println("Please enter your solution to the problem (Press q to stop): \n");
         String userInput = "0";
         int i = 0;
         int flag1 = 0;
@@ -36,7 +36,7 @@ public class Code implements java.io.Serializable{
             }
             userOpcode.get(i).setOpcode(userInput);
             flag1 = checkUserOpcode();
-            if(flag1 == 8 || flag1 == 9 || flag1 == 10 || flag1 == 11) {
+            if(flag1 >= 8) {
                 i++;
                 cc++;
                 setMemoryOpcode(flag1);
@@ -80,6 +80,18 @@ public class Code implements java.io.Serializable{
         }
         else if(opNum == 11) { //DEY
             regY.decValue(); 
+        }
+        else if(opNum == 12) { //INCA
+            accA.incValue();
+        }
+        else if(opNum == 13) { //INCB
+            accB.incValue();
+        }
+        else if(opNum == 14) { //INX
+            regX.incValue();
+        }
+        else if(opNum == 15) { //INY
+            regY.incValue();
         }
     }
 

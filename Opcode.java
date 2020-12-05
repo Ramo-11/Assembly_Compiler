@@ -20,6 +20,10 @@ public class Opcode implements java.io.Serializable{
         definedInstructions.add("DECB");
         definedInstructions.add("DEX");
         definedInstructions.add("DEY");
+        definedInstructions.add("INCA");
+        definedInstructions.add("INCB");
+        definedInstructions.add("INX");
+        definedInstructions.add("INY");
     }
 
     public void instructionDefinition() {
