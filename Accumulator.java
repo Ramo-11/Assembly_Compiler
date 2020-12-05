@@ -14,6 +14,18 @@ public class Accumulator implements java.io.Serializable{
         this.value = value;
     }
 
+    public void addValue(int value) {
+        this.value += value;
+    }
+
+    public void decValue() {
+        this.value--;
+    }
+
+    public void incValue() {
+        this.value++;
+    }
+
     public void setValue(int value) {
         this.value = value;
     }

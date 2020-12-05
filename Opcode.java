@@ -12,6 +12,14 @@ public class Opcode implements java.io.Serializable{
         definedInstructions.add("LDAB");
         definedInstructions.add("LDX");
         definedInstructions.add("LDY");
+        definedInstructions.add("ADDA");
+        definedInstructions.add("ADDB");
+        definedInstructions.add("ADX");
+        definedInstructions.add("ADY");
+        definedInstructions.add("DECA");
+        definedInstructions.add("DECB");
+        definedInstructions.add("DEX");
+        definedInstructions.add("DEY");
     }
 
     public void instructionDefinition() {

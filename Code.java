@@ -20,7 +20,7 @@ public class Code implements java.io.Serializable{
     }
     
     public void setUserCode(){
-        System.out.println("Please enter your solution to the problem: \n");
+        System.out.println("\nPlease enter your solution to the problem (Press q to stop): \n");
         String userInput = "0";
         int i = 0;
         int flag1 = 0;
@@ -35,15 +35,22 @@ public class Code implements java.io.Serializable{
                 break;
             }
             userOpcode.get(i).setOpcode(userInput);
+            flag1 = checkUserOpcode();
+            if(flag1 == 8 || flag1 == 9 || flag1 == 10 || flag1 == 11) {
+                i++;
+                cc++;
+                setMemoryOpcode(flag1);
+                continue;
+            }
             userInput = obj.next();
             userOperand.get(i).setOperand(userInput);
-            flag1 = checkUserOpcode();
             flag2 = checkUserOperand();
             if(flag1 == -2 || flag2 == -1) {
                 continue;        
             }
             i++;
             cc++;
+            setMemory(flag1, flag2);
         }
     }
     
@@ -52,7 +59,6 @@ public class Code implements java.io.Serializable{
        
         op = userOpcode.get(cc).checkOpcode();
         return op;
-        //setMemory(op, opr);
     } //end checkUserCode
 
     public int checkUserOperand() {
@@ -60,6 +66,21 @@ public class Code implements java.io.Serializable{
 
         opr = userOperand.get(cc).checkOperand();
         return opr;
+    }
+
+    public void setMemoryOpcode(int opNum) {
+        if(opNum == 8) { //DECA
+            accA.decValue();
+        }
+        else if(opNum == 9) { //DECB
+            accB.decValue();
+        }
+        else if(opNum == 10) { //DEX
+            regX.decValue(); 
+        }
+        else if(opNum == 11) { //DEY
+            regY.decValue(); 
+        }
     }
 
     public void setMemory(int opNum, int oprValue) {
@@ -72,8 +93,20 @@ public class Code implements java.io.Serializable{
         else if(opNum == 2) { //LDX
             regX.setValue(oprValue);
         }
-        else if(opNum == 3) {
+        else if(opNum == 3) { //LDY
             regY.setValue(oprValue);
+        }
+        else if(opNum == 4) { //ADDA
+            accA.addValue(oprValue);
+        }
+        else if(opNum == 5) { //ADDB
+            accB.addValue(oprValue);
+        }
+        else if(opNum == 6) { //ADX
+            regX.addValue(oprValue);
+        }
+        else if(opNum == 7) { //ADY
+            regY.addValue(oprValue);
         }
     } //end Accumulators
 } //end Code

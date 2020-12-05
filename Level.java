@@ -36,7 +36,7 @@ public class Level implements java.io.Serializable{
            return 2; 
         }
         else if(choice == 3) {
-           // checkProblemSolution(level);
+            return 3;
         }
         else {
             System.out.println("Invalid");

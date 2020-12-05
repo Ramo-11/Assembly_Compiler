@@ -1,6 +1,10 @@
 Level 1
-Load accumulator A with the value 5
+Load accumulator A with the value 5, then decrement the accumulator.
 Level 2
-Load all registers with the hex value 8
+Load all registers with the hex value B
 Level 3 
-Load accumulator B with the value 6 and add to it the hex value 10
+Load register y  with the value 7 and add to it the hex value F
+Level 4
+Load each register with the value 10 and increment them twice, the final value in registers should be 12.
+Level 5
+Load accumulator a with the value 1 and add to it the value 4, then load b with the value 10 and add to it hex value A 
