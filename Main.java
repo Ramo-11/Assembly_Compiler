@@ -119,11 +119,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if(users.get(userNum).level.get(x-1).code.accA.getValue() == 4) {
-                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                System.out.println("\nYour answer for problem " + x + " has been submitted and it is correct");
                 users.get(userNum).rank[0] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!\n");
+                System.out.println("\nYour answer has been submitted and it is incorrect!");
                 users.get(userNum).rank[0] = "Not Solved";
             }
         }
@@ -132,11 +132,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 11) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 11)) {
-                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                System.out.println("\nYour answer for problem " + x + " has been submitted and it is correct");
                 users.get(userNum).rank[1] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!\n");
+                System.out.println("\nYour answer has been submitted and it is incorrect!");
                 users.get(userNum).rank[1] = "Not Solved";
             }
         }
@@ -145,11 +145,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accA.getValue() == 6) && (users.get(userNum).level.get(x-1).code.accB.getValue() == 38)) {
-                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                System.out.println("\nYour answer for problem " + x + " has been submitted and it is correct");
                 users.get(userNum).rank[2] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!\n");
+                System.out.println("\nYour answer has been submitted and it is incorrect!");
                 users.get(userNum).rank[2] = "Not Solved";
             }
         }
@@ -158,11 +158,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 12) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 12)) {
-                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                System.out.println("\nYour answer for problem " + x + " has been submitted and it is correct");
                 users.get(userNum).rank[3] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!");
+                System.out.println("\nYour answer has been submitted and it is incorrect!");
                 users.get(userNum).rank[3] = "Not Solved";
             }
         }
@@ -171,11 +171,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accA.getValue() == 5) && users.get(userNum).level.get(x-1).code.accB.getValue() == 20) {
-                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                System.out.println("\nYour answer for problem " + x + " has been submitted and it is correct");
                 users.get(userNum).rank[4] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!");
+                System.out.println("\nYour answer has been submitted and it is incorrect!");
                 users.get(userNum).rank[4] = "Not Solved";
             }
         }

@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 public class Code implements java.io.Serializable{
 
-    //String instruction;
-    int cc; //This counter is for the line of opcode
-    int cc2; //This counter is for the line of operand
+    int cc; //This counter is for the line of code
     ArrayList<Opcode> userOpcode;
     ArrayList<Operand> userOperand;
     Accumulator accA = new Accumulator();
@@ -15,11 +13,9 @@ public class Code implements java.io.Serializable{
     Register regY = new Register();
 
     public Code() {
-        //instruction = "0";
         userOpcode = new ArrayList<Opcode>();
         userOperand = new ArrayList<Operand>();
         cc = 0;
-        cc2 = 0;
     }
     
     public void setUserCode(){
@@ -51,12 +47,11 @@ public class Code implements java.io.Serializable{
             userInput = obj.next();
             userOperand.get(i).setOperand(userInput);
             flag2 = checkUserOperand();
-            if(flag2 == -1) {
+            if(flag2 == -1) { //Operand is not valid
                 continue;        
             }
             i++;
             cc++;
-            cc2++;
             setMemory(flag1, flag2);
         }
     }
@@ -66,7 +61,7 @@ public class Code implements java.io.Serializable{
 
         op = userOpcode.get(cc).checkOpcode();
         return op;
-    } //end checkUserCode
+    } //end checkUserOpcode
 
     public int checkUserOperand() {
         int opr = 0;
@@ -139,6 +134,5 @@ public class Code implements java.io.Serializable{
 
     public void resetCounter() {
         cc = 0;
-        cc2 = 0;
     }
 } //end Code
