@@ -120,6 +120,7 @@ public class Main {
             }
             else {
                 System.out.println("Your answer has been submitted and it is incorrect!\n");
+                users.get(userNum).rank[0] = "Not Solved";
             }
         }
         else if(x == 2) {
@@ -132,6 +133,7 @@ public class Main {
             }
             else {
                 System.out.println("Your answer has been submitted and it is incorrect!\n");
+                users.get(userNum).rank[1] = "Not Solved";
             }
         }
         else if(x == 3) {
@@ -144,6 +146,7 @@ public class Main {
             }
             else {
                 System.out.println("Your answer has been submitted and it is incorrect!\n");
+                users.get(userNum).rank[2] = "Not Solved";
             }
         }
         else if(x == 4) {
@@ -156,6 +159,7 @@ public class Main {
             }
             else {
                 System.out.println("Your answer has been submitted and it is incorrect!");
+                users.get(userNum).rank[3] = "Not Solved";
             }
         }
         else if(x == 5) {
@@ -167,7 +171,8 @@ public class Main {
                 users.get(userNum).rank[4] = "Solved";
             }
             else {
-                System.out.println("Your answer has been submitted and it is incorrect!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!");
+                users.get(userNum).rank[4] = "Not Solved";
             }
         }
         save.saveUser(this.users);
