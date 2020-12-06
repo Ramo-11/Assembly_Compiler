@@ -33,7 +33,7 @@ public class Level implements java.io.Serializable{
         
         return choice;
     }
-
+    
     public void setCurrent(int current) {
         this.current = current;
     }

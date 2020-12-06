@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class Code implements java.io.Serializable{
 
     //String instruction;
-    int cc;     //This counter is for the line of code
+    int cc; //This counter is for the line of opcode
+    int cc2; //This counter is for the line of operand
     ArrayList<Opcode> userOpcode;
     ArrayList<Operand> userOperand;
     Accumulator accA = new Accumulator();
@@ -18,6 +19,7 @@ public class Code implements java.io.Serializable{
         userOpcode = new ArrayList<Opcode>();
         userOperand = new ArrayList<Operand>();
         cc = 0;
+        cc2 = 0;
     }
     
     public void setUserCode(){
@@ -32,18 +34,18 @@ public class Code implements java.io.Serializable{
             userOperand.add(new Operand());
             Scanner obj = new Scanner(System.in);
             userInput = obj.next();
-            if(userInput.equals("q")) {
+            if(userInput.equals("q")) { //The user pressed q
                 break;
             }
             userOpcode.get(i).setOpcode(userInput);
             flag1 = checkUserOpcode();
-            if(flag1 >= 8) {
+            if(flag1 >= 8) { //The user enterred a command that does not need operand
                 i++;
                 cc++;
                 setMemoryOpcode(flag1);
                 continue;
             }
-            if(flag1 == -2) {
+            if(flag1 == -2) { //The user enterred an instruction that doesn't exist 
                 continue;
             }
             userInput = obj.next();
@@ -54,12 +56,14 @@ public class Code implements java.io.Serializable{
             }
             i++;
             cc++;
+            cc2++;
             setMemory(flag1, flag2);
         }
     }
     
     public int checkUserOpcode() {
         int op = 0;
+
         op = userOpcode.get(cc).checkOpcode();
         return op;
     } //end checkUserCode
@@ -135,5 +139,6 @@ public class Code implements java.io.Serializable{
 
     public void resetCounter() {
         cc = 0;
+        cc2 = 0;
     }
 } //end Code

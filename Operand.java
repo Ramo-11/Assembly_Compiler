@@ -53,7 +53,7 @@ public class Operand implements java.io.Serializable{
              } //end esle
         }
        else {
-            System.out.println("Invalid operand\n");
+            System.out.println("Invalid operand");
             return -1;
         }
         //return -2;

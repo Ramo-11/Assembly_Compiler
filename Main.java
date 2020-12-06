@@ -18,10 +18,10 @@ public class Main {
         int userNum;
         int menuChoice;
         boolean keepGoing = true;
-        
-        clearScreen();
 
         m.loadInfo();
+        clearScreen();
+
         userNum = m.begin();  //Allow the user to log in
         m.loadInfo();
         
@@ -84,7 +84,7 @@ public class Main {
         int codeCC = 0;
         int holdSize;
 
-        System.out.println("Which level's solution do you want to view?");
+        System.out.println("Which problem would you like to view your solution for?");
         i = Obj.nextInt();
         holdSize = users.get(userNum).level.get(i-1).code.userOpcode.size();
         
@@ -103,8 +103,8 @@ public class Main {
                 else{
                     System.out.println(this.users.get(userNum).level.get(i-1).code.userOpcode.get(codeCC).getOpcode() + "\t" + this.users.get(userNum).level.get(i-1).code.userOperand.get(codeCC).getOperand());
                 }
-            } //end else
-        } //end for
+            } //end for
+        } //end else
     } //end viewUserSolutions
 
     public void checkProblemSolution(int userNum) {
