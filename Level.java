@@ -27,7 +27,8 @@ public class Level implements java.io.Serializable{
         System.out.println("1- Solve a problem");
         System.out.println("2- View a previous solution");
         System.out.println("3- Submit and check your solutions");
-        System.out.println("4- Exit");
+        System.out.println("4- View list of available instructions");
+        System.out.println("5- Exit");
         choice = obj.nextInt();
         
         return choice;

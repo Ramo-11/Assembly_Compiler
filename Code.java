@@ -43,10 +43,13 @@ public class Code implements java.io.Serializable{
                 setMemoryOpcode(flag1);
                 continue;
             }
+            if(flag1 == -2) {
+                continue;
+            }
             userInput = obj.next();
             userOperand.get(i).setOperand(userInput);
             flag2 = checkUserOperand();
-            if(flag1 == -2 || flag2 == -1) {
+            if(flag2 == -1) {
                 continue;        
             }
             i++;

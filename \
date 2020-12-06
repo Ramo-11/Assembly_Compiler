@@ -41,7 +41,7 @@ public class Main {
                 Wait();
             }
             else if(menuChoice == 4) {
-                m.viewInstructions();
+                m.viewInstructions(userNum);
                 Wait();
             }
             else {
@@ -196,24 +196,13 @@ public class Main {
         else {}
     }
 
-    public void viewInstructions() {
-        try {
-            File theFile = new File("listOpcode.txt");
-            Scanner input = new Scanner(theFile);
-
-            String temp;
-            int i = 0;
-
-            while(input.hasNext()) {
-                temp = input.next();
-                System.out.println("Instruction " + (i+1) + ": " + temp);
-                i++;
-            }
-            input.close();
-        } catch(IOException e) {
-            System.out.println(e.getMessage());
+    public void viewInstructions(int userNum) {
+            System.out.println("Instruction " + (i+1) + ":" + users.get(userNum).level.get(0).getProblem());
+        for(int i = 0; i < users.get(userNum).level.get(0).code.userOpcode.size(); i++) {
+            System.out.println("Instruction " + (i+1) + ":" + users.get(userNum).level.get(0).getProblem());
+            System.out.println("Instruction " + (i+1) + ":" + users.get(userNum).level.get(0).code.userOpcode.get(i));
         }
-    } //end viewInstructions
+    }
     
     public void loadUser() {
         try {
