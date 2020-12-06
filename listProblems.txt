@@ -3,7 +3,7 @@ Load accumulator A with the value 5, then decrement the accumulator.
 Level 2
 Load all registers with the hex value B
 Level 3 
-Load register y  with the value 7 and add to it the hex value F
+Load accumulator A with the value 6 and transfer that value to accumulator B, then add to accumulator B the hex value 20
 Level 4
 Load each register with the value 10 and increment them twice, the final value in registers should be 12.
 Level 5

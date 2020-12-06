@@ -5,32 +5,22 @@ import java.io.Serializable;
 public class User implements java.io.Serializable{
 
     String name;
-    int rank;
+    String rank[] = new String[]{"Not Solved", "Not Solved", "Not Solved", "Not Solved", "Not Solved"};
     ArrayList<Level> level;
     ReadWrite s = new ReadWrite();
 
     public User() {
         name = "user";
-        rank = 0;
         level = new ArrayList<Level>();
     }
 
     public User(String name) {
         this.name = name;
-        this.rank = 0;
         level = new ArrayList<Level>();
     }
     
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
     public String getName() {
         return this.name;
-    }
-
-    public int getRank() {
-        return this.rank;
     }
 
     public int login(ArrayList<User> users) {
@@ -49,7 +39,7 @@ public class User implements java.io.Serializable{
             ReadWrite save = new ReadWrite();
                 
             Scanner obj2 = new Scanner(System.in);
-            System.out.println("We can't find you in our system!");
+            System.out.println("\nWe can't find you in our system!");
             System.out.println("Do you want to be a new member?");
             System.out.println("Press 1 for " + "Yes" + " and 2 for " + "No");
             a = obj2.nextInt();
@@ -57,7 +47,7 @@ public class User implements java.io.Serializable{
             if (a == 1) {
                 users.add(new User(tempName));
                 s.saveUser(users);       
-                System.out.println("Awesome! you have been added to our system.");
+                System.out.println("\nAwesome! you have been added to our system.");
                 a = users.size() - 1;
                 return a;
             }

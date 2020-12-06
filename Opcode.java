@@ -24,14 +24,8 @@ public class Opcode implements java.io.Serializable{
         definedInstructions.add("INCB");
         definedInstructions.add("INX");
         definedInstructions.add("INY");
-    }
-
-    public void instructionDefinition() {
-        System.out.println("LDAA: \n");
-        System.out.println("\tLoads the value written after it to accumulator A.");
-
-        System.out.println("LDAB: \n");
-        System.out.println("\tLoads the value written after it to accumulator B.");
+        definedInstructions.add("TAB");
+        definedInstructions.add("TBA");
     }
 
     public void setOpcode(String instruction) {

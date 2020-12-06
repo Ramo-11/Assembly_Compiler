@@ -93,6 +93,14 @@ public class Code implements java.io.Serializable{
         else if(opNum == 15) { //INY
             regY.incValue();
         }
+        else if(opNum == 16) { //TAB
+            int a = accA.getValue();
+            accB.setValue(a);
+        }
+        else if(opNum == 16) { //TBA
+            int b = accB.getValue();
+            accA.setValue(b);
+        }
     } //end setMemoryOpcode
 
     public void setMemory(int opNum, int oprValue) {

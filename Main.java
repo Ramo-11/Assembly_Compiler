@@ -72,7 +72,7 @@ public class Main {
             this.users.get(userNum).level.get(i-1).Start();
             save.saveUser(this.users);
         }
-    } //end theProblem
+    } //end solveProblem
 
     public void viewUserSolutions(int userNum) {
         Scanner Obj = new Scanner(System.in);
@@ -104,9 +104,10 @@ public class Main {
     } //end viewUserSolutions
 
     public void checkProblemSolution(int userNum) {
+        ReadWrite save = new ReadWrite();
         Scanner obj = new Scanner(System.in);
         int x;
-        System.out.println("Please choose which problem you want to check your answer for: ");
+        System.out.println("Please choose which problem you want to submit and check your answer for: ");
         x = obj.nextInt();
 
         if(x == 1){ 
@@ -114,10 +115,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if(users.get(userNum).level.get(x-1).code.accA.getValue() == 4) {
-                System.out.println("Your answer to problem " + x + " is correct");
+                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                users.get(userNum).rank[0] = "Solved";
             }
             else {
-                System.out.println("Your answer is incorrect. Please try again!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!\n");
             }
         }
         else if(x == 2) {
@@ -125,21 +127,23 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 11) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 11) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 11)) {
-                System.out.println("Your answer to problem " + x + " is correct");
+                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                users.get(userNum).rank[1] = "Solved";
             }
             else {
-                System.out.println("Your answer is incorrect. Please try again!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!\n");
             }
         }
         else if(x == 3) {
             if(users.get(userNum).level.get(x-1).code.userOpcode.size() == 0) {
                 System.out.println("You have not tried solving this problem yet!");
             }
-            else if(users.get(userNum).level.get(x-1).code.regY.getValue() == 22) {
-                System.out.println("Your answer to problem " + x + " is correct");
+            else if((users.get(userNum).level.get(x-1).code.accA.getValue() == 6) && (users.get(userNum).level.get(x-1).code.accB.getValue() == 38)) {
+                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                users.get(userNum).rank[2] = "Solved";
             }
             else {
-                System.out.println("Your answer is incorrect. Please try again!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!\n");
             }
         }
         else if(x == 4) {
@@ -147,10 +151,11 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accB.getValue() == 12) && (users.get(userNum).level.get(x-1).code.accA.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regX.getValue() == 12) && (users.get(userNum).level.get(x-1).code.regY.getValue() == 12)) {
-                System.out.println("Your answer to problem " + x + " is correct");
+                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                users.get(userNum).rank[3] = "Solved";
             }
             else {
-                System.out.println("Your answer is incorrect. Please try again!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!");
             }
         }
         else if(x == 5) {
@@ -158,13 +163,29 @@ public class Main {
                 System.out.println("You have not tried solving this problem yet!");
             }
             else if((users.get(userNum).level.get(x-1).code.accA.getValue() == 5) && users.get(userNum).level.get(x-1).code.accB.getValue() == 20) {
-                System.out.println("Your answer to problem " + x + " is correct");
+                System.out.println("Your answer for problem " + x + " has been submitted and it is correct");
+                users.get(userNum).rank[4] = "Solved";
             }
             else {
-                System.out.println("Your answer is incorrect. Please try again!\n");
+                System.out.println("Your answer has been submitted and it is incorrect!\n");
             }
         }
+        save.saveUser(this.users);
+        subMenu(userNum);
     } //end checkProblemSolution
+
+    public void subMenu(int userNum) {
+        Scanner obj = new Scanner(System.in);
+        int x;
+        System.out.println("\nDo you want to view your ranking progress? Enter 1 for yes and 2 for no: ");
+        x = obj.nextInt();
+        if(x == 1) {
+            for(int i = 0; i < 5; i++) {
+                System.out.println("\nLevel " + (i+1) + ": " + users.get(userNum).rank[i]);
+            }
+        }
+        else {}
+    }
     
     public void loadUser() {
         try {
