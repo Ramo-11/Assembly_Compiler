@@ -1,6 +1,0 @@
-Level 1
-Load accumulator A with the value 5
-Level 2
-Load all registers with the hex value 8
-Level 3 
-Load accumulator B with the value 6 and add to it the hex value 10
