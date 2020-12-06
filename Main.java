@@ -31,16 +31,21 @@ public class Main {
             menuChoice = l.menu();
             if(menuChoice == 1) {
                 m.solveProblem(userNum);
+                Wait();
             }    
             else if(menuChoice == 2) {
-                m.viewUserSolutions(userNum);
+                m.practice(userNum);
                 Wait();
             }
             else if(menuChoice == 3) {
-                m.checkProblemSolution(userNum);
+                m.viewUserSolutions(userNum);
                 Wait();
             }
             else if(menuChoice == 4) {
+                m.checkProblemSolution(userNum);
+                Wait();
+            }
+            else if(menuChoice == 5) {
                 m.viewInstructions();
                 Wait();
             }
@@ -77,6 +82,11 @@ public class Main {
             save.saveUser(this.users);
         }
     } //end solveProblem
+
+    public void practice(int userNum) {
+        Level practiceLevel = new Level();
+        practiceLevel.Start();
+    } //end practice
 
     public void viewUserSolutions(int userNum) {
         Scanner Obj = new Scanner(System.in);

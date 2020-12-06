@@ -19,7 +19,7 @@ public class Code implements java.io.Serializable{
     }
     
     public void setUserCode(){
-        System.out.println("Please enter your solution to the problem (Press q to stop): \n");
+        System.out.println("Enter your code here (Press q to stop): \n");
         String userInput = "0";
         int i = 0;
         int flag1 = 0;
@@ -103,6 +103,7 @@ public class Code implements java.io.Serializable{
             int b = accB.getValue();
             accA.setValue(b);
         }
+            System.out.println("\t\ta = " + accA.getValue() + "  b = " + accB.getValue() + "  x = " + regX.getValue() + "  y = " + regY.getValue());
     } //end setMemoryOpcode
 
     public void setMemory(int opNum, int oprValue) {
@@ -130,6 +131,7 @@ public class Code implements java.io.Serializable{
         else if(opNum == 7) { //ADY
             regY.addValue(oprValue);
         }
+            System.out.println("\t\ta = " + accA.getValue() + "  b = " + accB.getValue() + "  x = " + regX.getValue() + "  y = " + regY.getValue());
     } //end setMemory
 
     public void resetCounter() {

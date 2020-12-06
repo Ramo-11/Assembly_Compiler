@@ -25,10 +25,11 @@ public class Level implements java.io.Serializable{
         Scanner obj = new Scanner(System.in);
         System.out.println("\nPlease choose what you would like to do from the menu: ");
         System.out.println("1- Solve a problem");
-        System.out.println("2- View a previous solution");
-        System.out.println("3- Submit and check your solutions");
-        System.out.println("4- View list of available instructions");
-        System.out.println("5- Exit");
+        System.out.println("2- Practice");
+        System.out.println("3- View a previous solution");
+        System.out.println("4- Submit and check your solutions");
+        System.out.println("5- View list of available instructions");
+        System.out.println("6- Exit");
         choice = obj.nextInt();
         
         return choice;
