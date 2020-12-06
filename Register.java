@@ -12,9 +12,18 @@ public class Register extends Memory implements java.io.Serializable {
         super(value);
     }
 
+    public void addValue(int valueNum) {
+        int temp = this.value;
+        this.value += valueNum;
+        if(this.value > 65535) {
+            System.out.println("The value you are trying to load is too big!");
+            this.value = temp;
+        }
+        else {}
+    }
     public void setValue(int valueNum) {
         if(valueNum > 65535) {
-            System.out.println("The value you are trying to load into the register is too big");
+            System.out.println("The value you are trying to load is too big!");
         }
         else {
             this.value = valueNum;

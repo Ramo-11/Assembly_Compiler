@@ -17,7 +17,17 @@ public class Code implements java.io.Serializable{
         userOperand = new ArrayList<Operand>();
         cc = 0;
     }
-    
+   
+    public void clearData() {
+        userOpcode.clear();
+        userOperand.clear();
+        accA.setValue(0);
+        accB.setValue(0);
+        regX.setValue(0);
+        regY.setValue(0);
+        setUserCode();
+    }
+
     public void setUserCode(){
         System.out.println("Enter your code here (Press q to stop): \n");
         String userInput = "0";
