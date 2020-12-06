@@ -103,7 +103,7 @@ public class Code implements java.io.Serializable{
             int b = accB.getValue();
             accA.setValue(b);
         }
-            System.out.println("\t\ta = " + accA.getValue() + "  b = " + accB.getValue() + "  x = " + regX.getValue() + "  y = " + regY.getValue());
+            System.out.println("\t\tA = " + accA.getValue() + "  B = " + accB.getValue() + "  X = " + regX.getValue() + "  Y = " + regY.getValue());
     } //end setMemoryOpcode
 
     public void setMemory(int opNum, int oprValue) {
@@ -131,7 +131,7 @@ public class Code implements java.io.Serializable{
         else if(opNum == 7) { //ADY
             regY.addValue(oprValue);
         }
-            System.out.println("\t\ta = " + accA.getValue() + "  b = " + accB.getValue() + "  x = " + regX.getValue() + "  y = " + regY.getValue());
+            System.out.println("\t\tA = " + accA.getValue() + "  B = " + accB.getValue() + "  X = " + regX.getValue() + "  Y = " + regY.getValue());
     } //end setMemory
 
     public void resetCounter() {
