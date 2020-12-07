@@ -109,7 +109,7 @@ public class Code implements java.io.Serializable{
             int a = accA.getValue();
             accB.setValue(a);
         }
-        else if(opNum == 16) { //TBA
+        else if(opNum == 17) { //TBA
             int b = accB.getValue();
             accA.setValue(b);
         }
