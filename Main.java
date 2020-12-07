@@ -27,41 +27,57 @@ public class Main {
         
         Wait();
         
-        while(keepGoing) {
-            menuChoice = l.menu();
-            if(menuChoice == 1) {
-                m.solveProblem(userNum);
-                Wait();
-            }    
-            else if(menuChoice == 2) {
-                m.practice(userNum);
-                Wait();
-            }
-            else if(menuChoice == 3) {
-                m.viewUserSolutions(userNum);
-                Wait();
-            }
-            else if(menuChoice == 4) {
-                m.checkProblemSolution(userNum);
-                Wait();
-            }
-            else if(menuChoice == 5) {
-                m.viewInstructions();
-                Wait();
-            }
-            else {
-                keepGoing = false;
-            }
-        } //end while
+        if(userNum == -4) {
+            m.practice();
+        }
+        else {
+            while(keepGoing) {
+                menuChoice = l.menu();
+                if(menuChoice == 1) {
+                    m.solveProblem(userNum);
+                    Wait();
+                }    
+                else if(menuChoice == 2) {
+                    m.practice();
+                    Wait();
+                }
+                else if(menuChoice == 3) {
+                    m.viewUserSolutions(userNum);
+                    Wait();
+                }
+                else if(menuChoice == 4) {
+                    m.checkProblemSolution(userNum);
+                    Wait();
+                }
+                else if(menuChoice == 5) {
+                    m.viewInstructions();
+                    Wait();
+                }
+                else {
+                    keepGoing = false;
+                }
+            } //end while
+        }
     } //end main
 
     public int begin() {
         int userNum;
+        int guestChoice;
         User u = new User();
+        Scanner obj = new Scanner(System.in);
 
-        userNum = u.login(this.users);
-        System.out.println("You are user number " + (userNum+1));       
-        return userNum;
+        System.out.println("*********************Welcome to Assembly Compiler************************");
+        System.out.println("Press 1 to log in, and 2 to continue as a guest and practice: ");
+        guestChoice = obj.nextInt();
+
+        if(guestChoice == 1) {
+            userNum = u.login(this.users);
+            System.out.println("You are user number " + (userNum+1));       
+            return userNum;
+        }
+        else {
+            return -4;
+        }
     }
 
     public void solveProblem(int userNum) {
@@ -83,7 +99,7 @@ public class Main {
         }
     } //end solveProblem
 
-    public void practice(int userNum) {
+    public void practice() {
         Level practiceLevel = new Level();
         practiceLevel.Start();
     } //end practice
@@ -233,8 +249,8 @@ public class Main {
             this.users = (ArrayList)in.readObject();
             
         } catch (IOException e) {
-            System.out.println("IO exception in load user!!");
-            System.out.println(e.getMessage());
+            //System.out.println("IO exception in load user!!");
+            //System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exception in load user!!");
         }
