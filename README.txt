@@ -16,7 +16,7 @@ My final project is called Assembly compiler, and the program does the following
 
 4- When the user is satisfied with their answers, they can submit their solution to a specific problem:
     a- if the answer is correct, the user's profile gets updated.
-    b- if it is wrong, the user can view their progress and reattempted solving the problem.
+    b- if it is wrong, the user can view their progress and reattempt solving the problem.
 
 5- The user can also view a list of available commands the program currently have.
 
