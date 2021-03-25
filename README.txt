@@ -2,7 +2,7 @@ Omar Abdelalim  12/07/2020
 
 *************************************Assembly compiler**************************************
 
-My final project is called Assembly compiler, and the program does the following tasks:
+This project is called Assembly compiler, and the program does the following tasks:
 
 1- Have a log in system.
 
@@ -25,9 +25,14 @@ Addition information:
     There are currently 5 levels that the program has.
     The user can't view an answer to a problem they haven't attempted and can't submit it either.
     
-The program has 2 can handle two types or errors:
+The program can handle two types or errors:
     Syntax errors and logical errors.
 
 There is a lot of room for improvement, such as addding more commands or adding more levels.
 
 *********************************************************************************************
+
+Discription to run the program:
+
+The Makefile makes the compiling and running processes very easy. Make sure you have g++ and make installed. then all you need to do is:
+"make clean" then "make" then "make run" without the quotations marks. 
